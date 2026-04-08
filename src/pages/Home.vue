@@ -2,9 +2,9 @@
   <div class="dashboard-page">
     <section class="month-selector-container">
       <div class="selector-controls">
-        <button class="month-arrow" @click="changeMonth(-1)">◀</button>
-        <h2 class="current-month">{{ currentYear }}년 {{ currentMonth }}월</h2>
-        <button class="month-arrow" @click="changeMonth(1)">▶</button>
+        <button class="month-arrow" @click="store.changeMonth(-1)">◀</button>
+        <h2 class="current-month">{{ store.currentMonth }}월</h2>
+        <button class="month-arrow" @click="store.changeMonth(1)">▶</button>
       </div>
     </section>
 
@@ -31,7 +31,13 @@
         </div>
       </article>
 
-      <article class="card-pink chart-box"></article>
+      <article class="card-pink chart-box" @click="router.push('/report')">
+        <Chart
+          :income="store.income"
+          :expense="store.expense"
+          :revenue="store.revenue"
+        />
+      </article>
 
       <aside class="action-area">
         <button class="add-btn" @click="router.push('/add')">+ 추가하기</button>
@@ -46,6 +52,13 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useCalendarStore } from '@/stores/calendar';
+import Chart from '@/components/Chart.vue';
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useFinanceStore } from '@/stores/finance';
+
+const router = useRouter();
+const store = useFinanceStore();
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -55,6 +68,9 @@ const currentMonth = ref(4);
 const calendarStore = useCalendarStore();
 const { currentYear, currentMonth } = storeToRefs(calendarStore);
 const { changeMonth } = calendarStore;
+onMounted(() => {
+  store.fetchData();
+});
 </script>
 
 <style></style>
