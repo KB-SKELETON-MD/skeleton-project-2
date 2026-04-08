@@ -1,9 +1,13 @@
 <template>
-  <div></div>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { reactive, computed } from 'vue';
+
+import { RouterView } from 'vue-router';
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>
