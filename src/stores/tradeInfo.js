@@ -2,7 +2,7 @@ import { ref, computed } from 'vue';
 import axios from 'axios';
 import { defineStore } from 'pinia';
 
-export const useFinanceStore = defineStore('finance', () => {
+export const useTradeInfoStore = defineStore('tradeinfo', () => {
   const transactions = ref([]);
   const categories = ref([]);
   const currentYear = ref(2025);

@@ -28,7 +28,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useFinanceStore } from '@/stores/finance';
+import { useFinanceStore } from '@/stores/tradeInfo';
 const financeStore = useFinanceStore();
 
 const incomeList = computed(() =>

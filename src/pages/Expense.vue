@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-import { useFinanceStore } from '@/stores/finance';
+import { useTradeInfoStore } from '@/stores/tradeInfo';
 
-const financeStore = useFinanceStore();
+const financeStore = useTradeInfoStore();
 </script>
 
 <style scoped></style>

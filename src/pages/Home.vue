@@ -74,9 +74,9 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useFinanceStore } from '@/stores/finance';
+import { useTradeInfoStore } from '@/stores/tradeInfo';
 
-const store = useFinanceStore();
+const store = useTradeInfoStore();
 
 onMounted(() => {
   if (store.transactions.length === 0) {
