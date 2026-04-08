@@ -2,6 +2,10 @@
   <div></div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useFinanceStore } from '@/stores/finance';
 
-<style></style>
+const financeStore = useFinanceStore();
+</script>
+
+<style scoped></style>
