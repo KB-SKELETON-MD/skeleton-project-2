@@ -60,7 +60,13 @@
         </div>
       </article>
 
-      <article class="card-pink chart-box"></article>
+      <article class="card-pink chart-box" @click="router.push('/report')">
+        <Chart
+          :income="store.income"
+          :expense="store.expense"
+          :revenue="store.revenue"
+        />
+      </article>
 
       <aside class="action-area">
         <button class="add-btn" @click="router.push('/add')">+ 추가하기</button>
@@ -75,8 +81,22 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useTradeInfoStore } from '@/stores/tradeInfo';
+import { storeToRefs } from 'pinia';
+import { useCalendarStore } from '@/stores/calendar';
+import Chart from '@/components/Chart.vue';
+import { useRouter } from 'vue-router';
+import { useFinanceStore } from '@/stores/finance';
 
-const store = useTradeInfoStore();
+const router = useRouter();
+const financeStore = useFinanceStore();
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const tradeInfoStore = useTradeInfoStore();
+
+const calendarStore = useCalendarStore();
+const { currentYear, currentMonth } = storeToRefs(calendarStore);
+const { changeMonth } = calendarStore;
 
 onMounted(() => {
   if (store.transactions.length === 0) {
