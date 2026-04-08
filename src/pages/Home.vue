@@ -1,22 +1,9 @@
 <template>
   <div class="dashboard-page">
-    <header class="top-bar">
-      <div class="brand-area">
-        <img src="@/assets/logos.png" alt="가계쀼 로고" class="logo-icon" />
-        <span class="brand-name">가계쀼</span>
-      </div>
-
-      <div class="top-actions">
-        <button class="icon-btn">🔍</button>
-        <button class="icon-btn">📅</button>
-        <button class="profile-circle"></button>
-      </div>
-    </header>
-
     <section class="month-selector-container">
       <div class="selector-controls">
         <button class="month-arrow" @click="changeMonth(-1)">◀</button>
-        <h2 class="current-month">{{ currentMonth }}월</h2>
+        <h2 class="current-month">{{ currentYear }}년 {{ currentMonth }}월</h2>
         <button class="month-arrow" @click="changeMonth(1)">▶</button>
       </div>
     </section>
@@ -57,15 +44,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useCalendarStore } from '@/stores/calendar';
 
-const currentMonth = ref(4);
-
-const changeMonth = (delta) => {
-  currentMonth.value += delta;
-  if (currentMonth.value > 12) currentMonth.value = 1;
-  if (currentMonth.value < 1) currentMonth.value = 12;
-};
+const calendarStore = useCalendarStore();
+const { currentYear, currentMonth } = storeToRefs(calendarStore);
+const { changeMonth } = calendarStore;
 </script>
 
 <style></style>

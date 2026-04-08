@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/pages/Home.vue';
-
 import Report from '@/pages/Report.vue';
 import MyPages from '@/pages/MyPages.vue';
 import Settings from '@/pages/Settings.vue';
@@ -47,7 +46,11 @@ const router = createRouter({
       name: 'expense',
       component: Expense,
     },
-    { path: '/:paths(.*).*', name: 'NotFound', component: NotFound },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound,
+    },
   ],
 });
 
