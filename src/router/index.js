@@ -6,8 +6,8 @@ import MyPages from '@/pages/MyPages.vue';
 import Settings from '@/pages/Settings.vue';
 import Transactions from '@/pages/Transactions.vue';
 import NotFound from '@/pages/NotFound.vue';
-import Income from '@/pages/income.vue';
-import Expense from '@/pages/expense.vue';
+import Income from '@/pages/Income.vue';
+import Expense from '@/pages/Expense.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,7 +47,7 @@ const router = createRouter({
       name: 'expense',
       component: Expense,
     },
-    { paths: '/:paths(.*).*', name: 'NotFound', component: NotFound },
+    { path: '/:paths(.*).*', name: 'NotFound', component: NotFound },
   ],
 });
 

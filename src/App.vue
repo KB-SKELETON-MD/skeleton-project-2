@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <Header />
-    <router-view></router-view>
+  <div id="app">
+    <router-view />
   </div>
 </template>
 
 <script setup>
 import { reactive, computed } from 'vue';
-import Header from './pages/Header.vue';
+
+import { RouterView } from 'vue-router';
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>
