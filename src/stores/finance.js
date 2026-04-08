@@ -20,6 +20,34 @@ export const useFinanceStore = defineStore('finance', () => {
       })
       .reduce((sum, t) => sum + t.amount, 0);
   });
+  const categoryTotals = computed(() => {
+    const totals = {};
+
+    // 이번 달 지출만 필터링해서 카테고리별로 합산
+    transactions.value
+      .filter((t) => {
+        const d = new Date(t.date);
+        return (
+          d.getFullYear() === currentYear.value &&
+          d.getMonth() + 1 === currentMonth.value &&
+          t.type === 'expense'
+        );
+      })
+      .forEach((t) => {
+        if (!totals[t.category]) totals[t.category] = 0;
+        totals[t.category] += t.amount;
+      });
+
+    // db.json의 categories 배열 정보(색상 등)와 합치기
+    return Object.entries(totals).map(([name, amount]) => {
+      const categoryInfo = categories.value.find((c) => c.name === name);
+      return {
+        name,
+        amount,
+        color: categoryInfo ? categoryInfo.color : '#cccccc', // 색상 정보가 없으면 회색
+      };
+    });
+  });
 
   const expense = computed(() => {
     return transactions.value
