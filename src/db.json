@@ -1,32 +1,101 @@
 {
   "categories": [
-    { "id": 1, "name": "salary", "label": "월급", "type": "income" },
-    { "id": 2, "name": "bonus", "label": "보너스", "type": "income" },
-    { "id": 3, "name": "allowance", "label": "용돈", "type": "income" },
-    { "id": 4, "name": "side_income", "label": "부수입", "type": "income" },
-    { "id": 5, "name": "refund", "label": "환불", "type": "income" },
-
-    { "id": 101, "name": "food", "label": "식비", "type": "expense" },
+    {
+      "id": 1,
+      "name": "salary",
+      "label": "월급",
+      "type": "income"
+    },
+    {
+      "id": 2,
+      "name": "bonus",
+      "label": "보너스",
+      "type": "income"
+    },
+    {
+      "id": 3,
+      "name": "allowance",
+      "label": "용돈",
+      "type": "income"
+    },
+    {
+      "id": 4,
+      "name": "side_income",
+      "label": "부수입",
+      "type": "income"
+    },
+    {
+      "id": 5,
+      "name": "refund",
+      "label": "환불",
+      "type": "income"
+    },
+    {
+      "id": 101,
+      "name": "food",
+      "label": "식비",
+      "type": "expense"
+    },
     {
       "id": 102,
       "name": "cafe_snack",
       "label": "카페/간식",
       "type": "expense"
     },
-    { "id": 103, "name": "grocery", "label": "장보기", "type": "expense" },
-    { "id": 104, "name": "transport", "label": "교통", "type": "expense" },
+    {
+      "id": 103,
+      "name": "grocery",
+      "label": "장보기",
+      "type": "expense"
+    },
+    {
+      "id": 104,
+      "name": "transport",
+      "label": "교통",
+      "type": "expense"
+    },
     {
       "id": 105,
       "name": "communication",
       "label": "통신비",
       "type": "expense"
     },
-    { "id": 106, "name": "housing", "label": "주거/관리비", "type": "expense" },
-    { "id": 107, "name": "medical", "label": "병원/약국", "type": "expense" },
-    { "id": 108, "name": "shopping", "label": "쇼핑", "type": "expense" },
-    { "id": 109, "name": "culture", "label": "문화/여가", "type": "expense" },
-    { "id": 113, "name": "savings", "label": "저축", "type": "expense" },
-    { "id": 114, "name": "etc", "label": "기타", "type": "expense" }
+    {
+      "id": 106,
+      "name": "housing",
+      "label": "주거/관리비",
+      "type": "expense"
+    },
+    {
+      "id": 107,
+      "name": "medical",
+      "label": "병원/약국",
+      "type": "expense"
+    },
+    {
+      "id": 108,
+      "name": "shopping",
+      "label": "쇼핑",
+      "type": "expense"
+    },
+    {
+      "id": 109,
+      "name": "culture",
+      "label": "문화/여가",
+      "type": "expense"
+    },
+    {
+      "id": 113,
+      "name": "savings",
+      "label": "저축",
+      "type": "expense"
+    },
+    {
+      "id": 114,
+      "name": "etc",
+      "label": "기타",
+      "type": "expense"
+    }
   ],
   "transactions": [
     {
@@ -101,7 +170,6 @@
       "memo": "영화",
       "isFixed": false
     },
-
     {
       "id": 9,
       "date": "2025-04-01",
@@ -165,7 +233,6 @@
       "memo": "교통",
       "isFixed": false
     },
-
     {
       "id": 16,
       "date": "2025-05-05",
@@ -202,16 +269,6 @@
       "memo": "외식",
       "isFixed": false
     },
-    {
-      "id": 20,
-      "date": "2025-05-12",
-      "type": "expense",
-      "categoryId": 112,
-      "amount": 50000,
-      "memo": "선물",
-      "isFixed": false
-    },
-
     {
       "id": 21,
       "date": "2025-05-15",
@@ -257,7 +314,6 @@
       "memo": "적금",
       "isFixed": true
     },
-
     {
       "id": 26,
       "date": "2025-06-01",
@@ -303,7 +359,6 @@
       "memo": "커피",
       "isFixed": false
     },
-
     {
       "id": 31,
       "date": "2025-06-15",
@@ -376,7 +431,6 @@
       "memo": "빙수",
       "isFixed": false
     },
-
     {
       "id": 39,
       "date": "2025-07-15",
@@ -404,7 +458,6 @@
       "memo": "교통",
       "isFixed": false
     },
-
     {
       "id": 42,
       "date": "2025-08-05",
@@ -432,7 +485,6 @@
       "memo": "월세",
       "isFixed": true
     },
-
     {
       "id": 45,
       "date": "2025-08-10",
@@ -469,7 +521,6 @@
       "memo": "마트",
       "isFixed": false
     },
-
     {
       "id": 49,
       "date": "2025-09-05",
@@ -488,7 +539,6 @@
       "memo": "월세",
       "isFixed": true
     },
-
     {
       "id": 51,
       "date": "2025-09-10",
@@ -508,15 +558,6 @@
       "isFixed": false
     },
     {
-      "id": 53,
-      "date": "2025-09-15",
-      "type": "expense",
-      "categoryId": 110,
-      "amount": 120000,
-      "memo": "강의",
-      "isFixed": false
-    },
-    {
       "id": 54,
       "date": "2025-09-18",
       "type": "expense",
@@ -525,7 +566,6 @@
       "memo": "교통",
       "isFixed": false
     },
-
     {
       "id": 55,
       "date": "2025-10-05",
@@ -544,7 +584,6 @@
       "memo": "월세",
       "isFixed": true
     },
-
     {
       "id": 57,
       "date": "2025-10-10",
@@ -564,16 +603,6 @@
       "isFixed": false
     },
     {
-      "id": 59,
-      "date": "2025-10-15",
-      "type": "expense",
-      "categoryId": 112,
-      "amount": 70000,
-      "memo": "경조사",
-      "isFixed": false
-    },
-
-    {
       "id": 60,
       "date": "2025-11-05",
       "type": "income",
@@ -591,7 +620,6 @@
       "memo": "월세",
       "isFixed": true
     },
-
     {
       "id": 62,
       "date": "2025-11-10",
@@ -619,7 +647,6 @@
       "memo": "약국",
       "isFixed": false
     },
-
     {
       "id": 65,
       "date": "2025-12-05",
@@ -638,7 +665,6 @@
       "memo": "상여금",
       "isFixed": false
     },
-
     {
       "id": 67,
       "date": "2025-12-10",
@@ -658,16 +684,6 @@
       "isFixed": false
     },
     {
-      "id": 69,
-      "date": "2025-12-18",
-      "type": "expense",
-      "categoryId": 112,
-      "amount": 120000,
-      "memo": "선물",
-      "isFixed": false
-    },
-
-    {
       "id": 70,
       "date": "2026-01-05",
       "type": "income",
@@ -685,7 +701,6 @@
       "memo": "월세",
       "isFixed": true
     },
-
     {
       "id": 72,
       "date": "2026-01-10",
@@ -713,7 +728,6 @@
       "memo": "장보기",
       "isFixed": false
     },
-
     {
       "id": 75,
       "date": "2026-02-05",
@@ -732,7 +746,6 @@
       "memo": "월세",
       "isFixed": true
     },
-
     {
       "id": 77,
       "date": "2026-02-10",
@@ -760,7 +773,6 @@
       "memo": "교통",
       "isFixed": false
     },
-
     {
       "id": 80,
       "date": "2026-02-18",
@@ -779,7 +791,6 @@
       "memo": "쇼핑",
       "isFixed": false
     },
-
     {
       "id": 82,
       "date": "2026-02-22",
@@ -799,13 +810,13 @@
       "isFixed": true
     },
     {
-      "id": 84,
-      "date": "2026-03-01",
+      "date": "2026-04-08",
       "type": "income",
-      "categoryId": 5,
-      "amount": 12000,
-      "memo": "환불",
-      "isFixed": false
+      "categoryId": 1,
+      "amount": 12345767,
+      "memo": "점심",
+      "isFixed": false,
+      "id": 84
     }
   ]
 }
