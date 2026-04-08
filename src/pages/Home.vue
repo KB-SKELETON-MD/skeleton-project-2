@@ -34,7 +34,7 @@
       <article class="card-pink chart-box"></article>
 
       <aside class="action-area">
-        <button class="add-btn">+ 추가하기</button>
+        <button class="add-btn" @click="router.push('/add')">+ 추가하기</button>
         <div class="illust-wrap" style="text-align: center">
           <img src="@/assets/couple.png" alt="커플사진" class="couple-img" />
         </div>
@@ -46,6 +46,11 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useCalendarStore } from '@/stores/calendar';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const currentMonth = ref(4);
 
 const calendarStore = useCalendarStore();
 const { currentYear, currentMonth } = storeToRefs(calendarStore);

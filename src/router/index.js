@@ -7,6 +7,7 @@ import Transactions from '@/pages/Transactions.vue';
 import NotFound from '@/pages/NotFound.vue';
 import Income from '@/pages/Income.vue';
 import Expense from '@/pages/Expense.vue';
+import Add from '@/pages/Add.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: NotFound,
+    },
+    {
+      path: '/add',
+      name: 'add',
+      component: Add,
     },
   ],
 });
