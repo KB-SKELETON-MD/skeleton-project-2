@@ -14,7 +14,7 @@
     "json-server": "^0.17.4",
     "pinia": "^3.0.4",
     "vue": "^3.5.30",
-    "vue-router": "^5.0.3"
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.4",

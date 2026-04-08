@@ -34,6 +34,15 @@ export const useTradeInfoStore = defineStore('tradeinfo', () => {
     }
   };
 
+  const changeMonth = (delta) => {
+    setMonth(delta);
+  };
+
+  const setDisplayedMonth = (year, month) => {
+    currentYear.value = year;
+    currentMonth.value = month;
+  };
+
   const filteredTransactions = computed(() => {
     const target = `${currentYear.value}-${String(currentMonth.value).padStart(2, '0')}`;
     return transactions.value.filter((t) => t.date.startsWith(target));
@@ -61,6 +70,9 @@ export const useTradeInfoStore = defineStore('tradeinfo', () => {
     isLoading,
     fetchData,
     setMonth,
+    changeMonth,
+    setDisplayedMonth,
+    filteredTransactions,
     totalIncome,
     totalExpense,
     netProfit,

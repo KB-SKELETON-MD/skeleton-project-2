@@ -28,8 +28,8 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useFinanceStore } from '@/stores/tradeInfo';
-const financeStore = useFinanceStore();
+import { useTradeInfoStore } from '@/stores/tradeInfo';
+const financeStore = useTradeInfoStore();
 
 const incomeList = computed(() =>
   financeStore.filteredTransactions.filter((t) => t.type === 'income'),

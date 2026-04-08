@@ -41,7 +41,10 @@ const handleAppClick = (event) => {
 }
 
 .panel-layer {
-  position: relative;
+  position: absolute;
+  top: 10px; /* 헤더 높이 바로 아래 */
+  right: 10px; /* 헤더 버튼 쪽에 맞춤 */
+  z-index: 2000;
 }
 
 .page-area {

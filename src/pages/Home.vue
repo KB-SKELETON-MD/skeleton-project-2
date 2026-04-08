@@ -1,22 +1,5 @@
 <template>
   <div class="dashboard-page" v-if="!store.isLoading">
-    <header class="top-bar">
-      <div class="brand-area">
-        <img src="@/assets/logos.png" alt="가계쀼 로고" class="logo-icon" />
-        <span class="brand-name">가계쀼</span>
-      </div>
-
-      <div class="top-actions">
-        <button class="icon-btn">🔍</button>
-        <button class="icon-btn">📅</button>
-        <button class="profile-circle"></button>
-      </div>
-
-      <button class="quick-add-btn" @click="handleAddAction" title="빠른 추가">
-        <span class="plus-icon">+</span>
-      </button>
-    </header>
-
     <section class="month-selector-container">
       <div class="selector-controls">
         <button class="month-arrow" @click="store.setMonth(-1)">◀</button>
@@ -62,9 +45,9 @@
 
       <article class="card-pink chart-box" @click="router.push('/report')">
         <Chart
-          :income="store.income"
-          :expense="store.expense"
-          :revenue="store.revenue"
+          :income="store.totalIncome"
+          :expense="store.totalExpense"
+          :revenue="store.netProfit"
         />
       </article>
 
@@ -81,22 +64,15 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useTradeInfoStore } from '@/stores/tradeInfo';
-import { storeToRefs } from 'pinia';
-import { useCalendarStore } from '@/stores/calendar';
 import Chart from '@/components/Chart.vue';
 import { useRouter } from 'vue-router';
-import { useFinanceStore } from '@/stores/finance';
 
 const router = useRouter();
-const financeStore = useFinanceStore();
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+const store = useTradeInfoStore();
 
-const tradeInfoStore = useTradeInfoStore();
-
-const calendarStore = useCalendarStore();
-const { currentYear, currentMonth } = storeToRefs(calendarStore);
-const { changeMonth } = calendarStore;
+const handleAddAction = () => {
+  router.push('/add');
+};
 
 onMounted(() => {
   if (store.transactions.length === 0) {
