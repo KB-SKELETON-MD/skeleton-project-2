@@ -213,26 +213,8 @@ body {
   color: var(--primary-pink);
 }
 
-/* 벚꽃 장식 레이아웃 */
-.cherry-blossom {
-  width: 120px;
-  opacity: 0.7;
-  pointer-events: none; /* 클릭 방해 금지 */
-}
-
-.deco-left {
-  text-align: right;
-}
-
-.deco-right {
-  text-align: left;
-}
-
 /* 반응형: 화면이 작아지면 장식은 숨기고 글자 크기를 조절합니다 */
 @media (max-width: 600px) {
-  .cherry-blossom {
-    display: none;
-  }
   .current-month {
     font-size: 1.8rem;
   }
@@ -241,4 +223,50 @@ body {
 .couple-img {
   width: 120px;
   height: 120px;
+}
+
+.quick-add-btn {
+  /* 1. 고정 위치 설정 */
+  position: fixed;
+  bottom: 30px; /* 바닥에서 30px 띄움 */
+  left: 30px; /* 왼쪽에서 30px 띄움 */
+  z-index: 999; /* 다른 요소보다 항상 위에 표시 */
+
+  /* 2. 원형 디자인 */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* 완전한 원형 */
+
+  /* 3. 색상 및 테두리 (기존 테마 유지) */
+  background-color: var(--primary-pink); /* 가계쀼 메인 핑크 */
+  border: 1.5px solid var(--border-color);
+  color: var(--text-main);
+
+  /* 4. 정렬 및 스타일 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 떠 있는 듯한 효과 */
+  transition: all 0.3s ease;
+}
+
+/* 플러스 아이콘 스타일 */
+.plus-icon {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 4px; /* 시각적 중앙 보정 */
+}
+
+/* 호버 효과*/
+.quick-add-btn:hover {
+  transform: scale(1.1) rotate(90deg); /* 크기가 커지면서 살짝 회전 */
+  background-color: #f8a5c2; /* 살짝 진한 핑크로 변경 */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* 클릭 시 눌리는 효과 */
+.quick-add-btn:active {
+  transform: scale(0.95);
 }
