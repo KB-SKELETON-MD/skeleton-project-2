@@ -73,18 +73,10 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
 import { onMounted } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
 
 const store = useFinanceStore();
-=======
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-const currentMonth = ref(4);
->>>>>>> d7d7488fc6becf68ead58aa8ebbf349c854dee58
 
 onMounted(() => {
   if (store.transactions.length === 0) {
