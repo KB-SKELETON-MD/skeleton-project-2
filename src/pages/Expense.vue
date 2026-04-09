@@ -27,11 +27,6 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
-import { useFinanceStore } from '@/stores/finance';
-
-const store = useFinanceStore();
-=======
 import { computed } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
 
@@ -40,7 +35,6 @@ const store = useFinanceStore();
 const expenseList = computed(() =>
   store.filteredTransactions.filter((t) => t.type === 'expense'),
 );
->>>>>>> c2cb9b91cef454d54c6be8215977154847d92827
 </script>
 
 <style scoped>

@@ -808,7 +808,6 @@
       "amount": 300000,
       "memo": "적금",
       "isFixed": true
-<<<<<<< HEAD
     },
 
     {
@@ -1873,8 +1872,6 @@
       "amount": 45000,
       "memo": "안 쓰는 물건 판매",
       "isFixed": false
-=======
->>>>>>> feature/JW
     }
   ]
 }
