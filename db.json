@@ -1873,5 +1873,19 @@
       "memo": "안 쓰는 물건 판매",
       "isFixed": false
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Jiwon",
+      "password": "0401",
+      "name": "지원"
+    },
+    {
+      "id": 2,
+      "username": "Jikwon",
+      "password": "0220",
+      "name": "지권"
+    }
   ]
 }
