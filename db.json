@@ -818,5 +818,19 @@
       "isFixed": false,
       "id": 84
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Jiwon",
+      "password": "0401",
+      "name": "지원"
+    },
+    {
+      "id": 2,
+      "username": "Jikwon",
+      "password": "0220",
+      "name": "지권"
+    }
   ]
 }
