@@ -1710,7 +1710,6 @@
       "memo": "마을버스",
       "isFixed": false
     },
-
     {
       "id": 186,
       "date": "2025-12-01",
@@ -1719,15 +1718,6 @@
       "amount": 12000,
       "memo": "평일 점심 식사",
       "isFixed": false
-    },
-    {
-      "id": 187,
-      "date": "2025-12-05",
-      "type": "income",
-      "categoryId": 1,
-      "amount": 2500000,
-      "memo": "12월 월급",
-      "isFixed": true
     },
     {
       "id": 188,
@@ -1790,15 +1780,6 @@
       "categoryId": 104,
       "amount": 18000,
       "memo": "연말 모임 이동 택시비",
-      "isFixed": false
-    },
-    {
-      "id": 195,
-      "date": "2025-12-31",
-      "type": "income",
-      "categoryId": 2,
-      "amount": 500000,
-      "memo": "연말 성과급",
       "isFixed": false
     },
 
