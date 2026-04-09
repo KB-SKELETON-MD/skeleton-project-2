@@ -53,7 +53,6 @@ const goSettings = () => {
 <style scoped>
 .panel {
   position: absolute;
-  top: 84px;
   right: 24px;
   width: 280px;
   background: white;
