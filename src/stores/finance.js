@@ -1,12 +1,14 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
 import axios from 'axios';
+import { useCalendarStore } from '@/stores/calendar';
 
 export const useFinanceStore = defineStore('finance', () => {
+  const calendarStore = useCalendarStore();
+  const { currentYear, currentMonth } = storeToRefs(calendarStore);
+
   const categories = ref([]);
   const transactions = ref([]);
-  const currentYear = ref(2025);
-  const currentMonth = ref(3);
   const isLoading = ref(false);
 
   const fetchData = async () => {
@@ -22,20 +24,18 @@ export const useFinanceStore = defineStore('finance', () => {
     }
   };
 
-  const setMonth = (delta) => {
-    currentMonth.value += delta;
-    if (currentMonth.value > 12) {
-      currentMonth.value = 1;
-      currentYear.value++;
+  const setMonth = (arg1, arg2) => {
+    if (typeof arg2 !== 'number') {
+      calendarStore.changeMonth(arg1);
+      return;
     }
-    if (currentMonth.value < 1) {
-      currentMonth.value = 12;
-      currentYear.value--;
-    }
+
+    calendarStore.setMonth(arg1, arg2);
   };
 
   const filteredTransactions = computed(() => {
     const target = `${currentYear.value}-${String(currentMonth.value).padStart(2, '0')}`;
+
     return transactions.value.filter(
       (t) => t.date && t.date.startsWith(target),
     );
