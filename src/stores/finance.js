@@ -76,7 +76,7 @@ export const useFinanceStore = defineStore('finance', () => {
     netProfit,
     filteredTransactions,
     selectedCategoryId,
-    setCategory,
+    //setCategory,
     filteredTransactions,
   };
 });

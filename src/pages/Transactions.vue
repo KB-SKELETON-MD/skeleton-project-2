@@ -4,6 +4,7 @@
       <h2 class="title">최근 거래 내역</h2>
 
       <p v-if="loading" class="status-text">불러오는 중...</p>
+      <p v-else-if="error" class="status-text error-text">{{ error }}</p>
 
       <div v-else class="transaction-list">
         <div
@@ -41,7 +42,7 @@ import { useTransactionStore } from '@/stores/transactions';
 
 const transactionStore = useTransactionStore();
 
-const { recentTransactions, loading } = storeToRefs(transactionStore);
+const { recentTransactions, loading, error } = storeToRefs(transactionStore);
 const { fetchTransactions } = transactionStore;
 
 onMounted(() => {
