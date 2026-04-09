@@ -72,9 +72,16 @@ const store = useFinanceStore();
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
+<<<<<<< HEAD
 const router = useRouter();
 const currentMonth = ref(4);
 
+=======
+const latestItems = computed(() =>
+  [...store.filteredTransactions].reverse().slice(0, 5),
+);
+1;
+>>>>>>> origin/develop
 onMounted(() => {
   store.fetchData();
 });
