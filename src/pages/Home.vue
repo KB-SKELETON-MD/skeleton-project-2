@@ -79,7 +79,7 @@ const store = useFinanceStore();
 const latestItems = computed(() =>
   [...store.filteredTransactions].reverse().slice(0, 5),
 );
-
+1;
 onMounted(() => {
   if (store.transactions.length === 0) store.fetchData();
 });
