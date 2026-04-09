@@ -53,11 +53,13 @@ export const useFinanceStore = defineStore('finance', () => {
       });
 
     return Object.entries(totals).map(([id, amount]) => {
-      const categoryInfo = categories.value.find((c) => c.id === Number(id));
+      const categoryInfo = categories.value.find(
+        (c) => String(c.id) === String(id),
+      );
       return {
         name: categoryInfo ? categoryInfo.label : '기타',
         amount: amount,
-        color: categoryInfo?.color || '#ccc',
+        color: categoryInfo && categoryInfo.color ? categoryInfo.color : null,
       };
     });
   });
