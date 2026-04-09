@@ -5,6 +5,22 @@
       <h2>{{ store.currentMonth }}월 지출 내역</h2>
     </header>
 
+    <div class="category-filter-bar">
+      <button
+        :class="['filter-btn', { active: store.selectedCategoryId === null }]"
+        @click="store.setCategory(null)"
+      >
+        전체
+      </button>
+      <button
+        v-for="cat in filteredCategories"
+        :key="cat.id"
+        :class="['filter-btn', { active: store.selectedCategoryId === cat.id }]"
+        @click="store.setCategory(cat.id)"
+      >
+        {{ cat.label }}
+      </button>
+    </div>
     <div class="list-wrapper">
       <div v-if="expenseList.length === 0" class="eempty-msg">
         해당 달의 지출 내역이 없습니다.
@@ -19,7 +35,7 @@
           <span class="item-memo">{{ item.memo }}</span>
         </div>
         <div class="item-amount expense-text">
-          -{{ item.amount.toLocaleString() }}원
+          - {{ item.amount.toLocaleString() }}원
         </div>
       </div>
     </div>
@@ -27,14 +43,26 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onUnmounted } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
+import { useRouter } from 'vue-router';
 
 const store = useFinanceStore();
+const router = useRouter();
+const filteredCategories = computed(() =>
+  store.categories.filter((c) => c.type === 'expense'),
+);
 
 const expenseList = computed(() =>
   store.filteredTransactions.filter((t) => t.type === 'expense'),
 );
+
+const handleBack = () => {
+  store.setCategory(null);
+  router.back();
+};
+
+onUnmounted(() => store.setCategory(null));
 </script>
 
 <style scoped>
@@ -89,5 +117,34 @@ const expenseList = computed(() =>
   color: #d14c4c;
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+.category-filter-bar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto; /* 카테고리가 많으면 옆으로 스크롤 */
+  padding: 10px 0 20px;
+  -ms-overflow-style: none; /* 스크롤바 숨기기 */
+  scrollbar-width: none;
+}
+.category-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-btn {
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  background: #ff7aa2; /* 가계쀼 포인트 컬러 */
+  color: white;
+  border-color: #ff7aa2;
 }
 </style>

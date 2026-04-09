@@ -8,6 +8,7 @@ export const useFinanceStore = defineStore('finance', () => {
   const currentYear = ref(2025);
   const currentMonth = ref(3);
   const isLoading = ref(false);
+  const selectedCategoryId = ref(null);
 
   const fetchData = async () => {
     try {
@@ -34,13 +35,6 @@ export const useFinanceStore = defineStore('finance', () => {
     }
   };
 
-  const filteredTransactions = computed(() => {
-    const target = `${currentYear.value}-${String(currentMonth.value).padStart(2, '0')}`;
-    return transactions.value.filter(
-      (t) => t.date && t.date.startsWith(target),
-    );
-  });
-
   const totalIncome = computed(() =>
     filteredTransactions.value
       .filter((t) => t.type === 'income')
@@ -55,6 +49,20 @@ export const useFinanceStore = defineStore('finance', () => {
 
   const netProfit = computed(() => totalIncome.value - totalExpense.value);
 
+  const filteredTransactions = computed(() => {
+    const target = `${currentYear.value}-${String(currentMonth.value).padStart(2, '0')}`;
+
+    let list = transactions.value.filter(
+      (t) => t.date && t.date.startsWith(target),
+    );
+
+    if (selectedCategoryId.value) {
+      list = list.filter((t) => t.categoryId === selectedCategoryId.value);
+    }
+
+    return list;
+  });
+
   return {
     transactions,
     categories,
@@ -66,6 +74,9 @@ export const useFinanceStore = defineStore('finance', () => {
     totalIncome,
     totalExpense,
     netProfit,
+    filteredTransactions,
+    selectedCategoryId,
+    setCategory,
     filteredTransactions,
   };
 });
