@@ -808,15 +808,6 @@
       "amount": 300000,
       "memo": "적금",
       "isFixed": true
-    },
-    {
-      "date": "2026-04-08",
-      "type": "income",
-      "categoryId": 1,
-      "amount": 12345767,
-      "memo": "점심",
-      "isFixed": false,
-      "id": 84
     }
   ]
 }
