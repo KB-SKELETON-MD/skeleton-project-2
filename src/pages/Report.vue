@@ -2,42 +2,14 @@
   <div class="dashboard-page">
     <div class="month-selector">
       <div class="month-bar">
-        <button class="arrow-btn" @click="store.changeMonth(-1)"><</button>
+        <button class="arrow-btn" @click="store.changeMonth(-1)">&lt;</button>
         <span class="current-date"
           >{{ store.currentYear }}년 {{ store.currentMonth }}월</span
         >
-        <button class="arrow-btn" @click="store.changeMonth(1)">></button>
+        <button class="arrow-btn" @click="store.changeMonth(1)">&gt;</button>
       </div>
     </div>
 
-<<<<<<< HEAD
-    <div class="center-graph">
-      <div class="chart-bar">
-        <span class="amount-label">{{ store.income.toLocaleString() }}원</span>
-        <div
-          class="income-chart"
-          :style="{ height: store.incomeHeight + 'px' }"
-        ></div>
-        <span>총수입</span>
-      </div>
-
-      <div class="chart-bar">
-        <span class="amount-label">{{ store.expense.toLocaleString() }}원</span>
-        <div
-          class="expense-chart"
-          :style="{ height: store.expenseHeight + 'px' }"
-        ></div>
-        <span>지출</span>
-      </div>
-
-      <div class="chart-bar">
-        <span class="amount-label">{{ store.revenue.toLocaleString() }}원</span>
-        <div
-          class="revenue-chart"
-          :style="{ height: store.revenueHeight + 'px' }"
-        ></div>
-        <span>순수익</span>
-=======
     <div class="charts-wrapper">
       <div class="left-graph">
         <div class="category-expense">
@@ -89,27 +61,12 @@
             <span class="label-text">순수익</span>
           </div>
         </div>
->>>>>>> 9ed891f797389f81077e029729ba05d2f24b7a8b
       </div>
     </div>
   </div>
 </template>
 <script setup>
 import { onMounted } from 'vue';
-<<<<<<< HEAD
-import { useReportStore } from '@/stores/report';
-
-// 리포트 전담 스토어 호출
-const store = useReportStore();
-
-onMounted(() => {
-  // 메인 데이터가 비어있을 때만 데이터를 가져옵니다.
-  // (Home에서 이미 가져왔다면 이 과정은 생략되어 속도가 빨라집니다!)
-  if (store.income === 0 && store.expense === 0) {
-    store.fetchData();
-  }
-});
-=======
 import PieChart from '@/components/PieChart.vue';
 import { useReportStore } from '@/stores/report';
 
@@ -122,7 +79,6 @@ onMounted(() => {
 const changeMonth = (delta) => {
   store.changeMonth(delta);
 };
->>>>>>> 9ed891f797389f81077e029729ba05d2f24b7a8b
 </script>
 
 <style scoped>
