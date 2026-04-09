@@ -13,7 +13,9 @@
       >
         📅
       </button>
-      <button class="profile-circle" @click.stop="toggleProfile">G</button>
+      <button class="profile-circle" @click.stop="toggleProfile">
+        {{ profileInitial }}
+      </button>
     </div>
   </header>
 </template>

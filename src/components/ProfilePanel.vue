@@ -1,5 +1,14 @@
 <template>
   <div class="panel profile-panel" @click.stop>
+    <!-- 사용자 정보 -->
+    <div class="profile-top">
+      <div class="avatar">{{ profileInitial }}</div>
+      <div>
+        <p class="name">{{ displayName }}님</p>
+        <p class="email">@{{ displayUsername }}</p>
+      </div>
+    </div>
+
     <!-- D-Day -->
     <div class="couple-dday">
       <p class="section-label">💖 함께한지</p>
@@ -28,13 +37,14 @@
       </ul>
     </div>
 
-    <!-- 로그아웃 -->
-    <button class="logout">🚪 로그아웃</button>
+    <button class="logout" @click="handleLogout">🚪 로그아웃</button>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useRouter } from 'vue-router';
 
 const startDate = new Date('2025-01-28');
 
@@ -119,6 +129,18 @@ watch(
   },
   { deep: true },
 );
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const displayName = computed(() => authStore.user?.name || '사용자');
+const displayUsername = computed(() => authStore.user?.username || 'guest');
+const profileInitial = computed(() => authStore.user?.name?.charAt(0) || 'G');
+
+const handleLogout = () => {
+  authStore.logout();
+  router.push('/login');
+};
 </script>
 
 <style scoped>
@@ -215,5 +237,39 @@ watch(
 
 .logout:hover {
   background: #ffd5e2;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f3e4e8;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ff8fab;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+}
+
+.email {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #888;
 }
 </style>
