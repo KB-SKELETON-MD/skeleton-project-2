@@ -1709,6 +1709,188 @@
       "amount": 1600,
       "memo": "마을버스",
       "isFixed": false
+    },
+
+    {
+      "id": 186,
+      "date": "2025-12-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 12000,
+      "memo": "평일 점심 식사",
+      "isFixed": false
+    },
+    {
+      "id": 187,
+      "date": "2025-12-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "12월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 188,
+      "date": "2025-12-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "12월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 189,
+      "date": "2025-12-10",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 5000,
+      "memo": "겨울 간식(붕어빵)",
+      "isFixed": false
+    },
+    {
+      "id": 190,
+      "date": "2025-12-15",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 42000,
+      "memo": "겨울용 생필품 구매",
+      "isFixed": false
+    },
+    {
+      "id": 191,
+      "date": "2025-12-20",
+      "type": "expense",
+      "categoryId": 109,
+      "amount": 15000,
+      "memo": "연말 영화 관람",
+      "isFixed": false
+    },
+    {
+      "id": 192,
+      "date": "2025-12-24",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 85000,
+      "memo": "크리스마스 이브 외식",
+      "isFixed": false
+    },
+    {
+      "id": 193,
+      "date": "2025-12-25",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 30000,
+      "memo": "크리스마스 케이크",
+      "isFixed": false
+    },
+    {
+      "id": 194,
+      "date": "2025-12-28",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 18000,
+      "memo": "연말 모임 이동 택시비",
+      "isFixed": false
+    },
+    {
+      "id": 195,
+      "date": "2025-12-31",
+      "type": "income",
+      "categoryId": 2,
+      "amount": 500000,
+      "memo": "연말 성과급",
+      "isFixed": false
+    },
+
+    {
+      "id": 196,
+      "date": "2026-03-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 15000,
+      "memo": "휴일 브런치",
+      "isFixed": false
+    },
+    {
+      "id": 197,
+      "date": "2026-03-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "3월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 198,
+      "date": "2026-03-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "3월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 199,
+      "date": "2026-03-10",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 6500,
+      "memo": "따뜻한 봄날 카페",
+      "isFixed": false
+    },
+    {
+      "id": 200,
+      "date": "2026-03-12",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 28000,
+      "memo": "봄맞이 청소용품",
+      "isFixed": false
+    },
+    {
+      "id": 201,
+      "date": "2026-03-14",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 40000,
+      "memo": "화이트데이 선물",
+      "isFixed": false
+    },
+    {
+      "id": 202,
+      "date": "2026-03-18",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 11000,
+      "memo": "평일 점심",
+      "isFixed": false
+    },
+    {
+      "id": 203,
+      "date": "2026-03-22",
+      "type": "expense",
+      "categoryId": 107,
+      "amount": 8000,
+      "memo": "환절기 비염약",
+      "isFixed": false
+    },
+    {
+      "id": 204,
+      "date": "2026-03-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 205,
+      "date": "2026-03-28",
+      "type": "income",
+      "categoryId": 4,
+      "amount": 45000,
+      "memo": "안 쓰는 물건 판매",
+      "isFixed": false
     }
   ]
 }
