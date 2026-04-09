@@ -1,22 +1,26 @@
 <template>
   <div class="center-graph">
     <div class="chart-bar">
-      <span class="amount-label">{{ props.income.toLocaleString() }}원</span>
+      <span class="amount-label"
+        >{{ store.totalIncome.toLocaleString() }}원</span
+      >
       <div class="income-chart" :style="{ height: incomeHeight + 'px' }"></div>
-      <span>총수입</span>
+      <span class="label-text">총수입</span>
     </div>
 
     <div class="chart-bar">
-      <span class="amount-label">{{ props.expense.toLocaleString() }}원</span>
+      <span class="amount-label"
+        >{{ store.totalExpense.toLocaleString() }}원</span
+      >
       <div
         class="expense-chart"
         :style="{ height: expenseHeight + 'px' }"
       ></div>
-      <span>지출</span>
+      <span class="label-text">지출</span>
     </div>
 
     <div class="chart-bar">
-      <span class="amount-label">{{ props.revenue.toLocaleString() }}원</span>
+      <span class="amount-label">{{ store.netProfit.toLocaleString() }}원</span>
       <div
         class="revenue-chart"
         :style="{ height: revenueHeight + 'px' }"
@@ -28,29 +32,28 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useFinanceStore } from '@/stores/finance';
 
-// ⭐️ 중요: Home.vue가 보내주는 :income, :expense, :revenue를 여기서 받습니다.
-const props = defineProps({
-  income: { type: Number, default: 0 },
-  expense: { type: Number, default: 0 },
-  revenue: { type: Number, default: 0 },
-});
-
+const store = useFinanceStore();
 const max_height = 150;
 
 const max_value = computed(() => {
-  const values = [props.income, props.expense, Math.abs(props.revenue)];
-  return Math.max(...values, 1);
+  const values = [
+    store.totalIncome,
+    store.totalExpense,
+    Math.abs(store.netProfit),
+  ];
+  return Math.max(...values, 10000);
 });
 
 const incomeHeight = computed(
-  () => (props.income / max_value.value) * max_height,
+  () => (store.totalIncome / max_value.value) * max_height,
 );
 const expenseHeight = computed(
-  () => (props.expense / max_value.value) * max_height,
+  () => (store.totalExpense / max_value.value) * max_height,
 );
 const revenueHeight = computed(
-  () => (Math.abs(props.revenue) / max_value.value) * max_height,
+  () => (Math.abs(store.netProfit) / max_value.value) * max_height,
 );
 </script>
 
@@ -79,22 +82,26 @@ const revenueHeight = computed(
   flex-direction: column;
   align-items: center;
 }
+.income-chart,
+.expense-chart,
+.revenue-chart {
+  width: 35px;
+  border-radius: 8px;
+  transition: height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 튀어오르는 애니메이션 */
+}
+
 .income-chart {
   background-color: #4acb6a;
-  width: 40px;
-  border-radius: 10px;
-  transition: height 0.4s ease;
 }
 .expense-chart {
   background-color: #d73e3e;
-  width: 40px;
-  border-radius: 10px;
-  transition: height 0.4s ease;
 }
 .revenue-chart {
   background-color: #494dd9;
-  width: 40px;
-  border-radius: 10px;
-  transition: height 0.4s ease;
+}
+.label-text {
+  font-size: 11px;
+  margin-top: 8px;
+  color: #333;
 }
 </style>

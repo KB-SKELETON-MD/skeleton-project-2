@@ -1,17 +1,5 @@
 <template>
   <div class="dashboard-page">
-    <header class="top-bar">
-      <div class="brand-area">
-        <img src="@/assets/logos.png" alt="가계쀼 로고" class="logo-icon" />
-        <button class="brand-name" @click="router.push('/')">가계쀼</button>
-      </div>
-      <div class="top-actions">
-        <button class="icon-btn">🔍</button>
-        <button class="icon-btn">📅</button>
-        <button class="profile-circle"></button>
-      </div>
-    </header>
-
     <div class="month-selector">
       <div class="month-bar">
         <button class="arrow-btn" @click="changeMonth(-1)"><</button>
