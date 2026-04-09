@@ -16,7 +16,19 @@ export const useAddStore = defineStore('add', () => {
 
   // 2. 데이터 공유 (Getters)
   // financeStore의 transactions를 그대로 가져와서 리스트에 보여줍니다.
-  const items = computed(() => financeStore.transactions);
+  //   const items = computed(() => financeStore.transactions);
+  const items = computed(() => {
+    return [...financeStore.transactions].sort((a, b) => {
+      const dateA = new Date(a.createdAt || a.date).getTime();
+      const dateB = new Date(b.createdAt || b.date).getTime();
+
+      if (dateB !== dateA) {
+        return dateB - dateA; // 최신 날짜가 위로
+      }
+
+      return b.id - a.id; // 날짜 같으면 id 큰 게 위로
+    });
+  });
 
   // 3. 데이터 추가 (Actions)
   const addItem = async () => {

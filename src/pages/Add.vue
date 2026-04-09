@@ -28,10 +28,10 @@
 
       <ul class="list">
         <li v-for="item in store.items" :key="item.id" class="list-item">
-          <span>
-            {{ item.type === 'expense' ? '지출' : '수입' }} / {{ item.memo }} /
-            {{ (item.amount || 0).toLocaleString() }}원
-          </span>
+          <span> {{ item.date }} </span>
+          <span>{{ item.type === 'expense' ? '지출' : '수입' }} </span>
+          <span>{{ item.memo }} </span>
+          <span>{{ item.amount.toLocaleString() }}원 </span>
           <button class="delete-btn" @click="store.deleteItem(item.id)">
             삭제
           </button>
@@ -48,7 +48,6 @@ import { useAddStore } from '@/stores/add';
 const store = useAddStore();
 
 onMounted(() => {
-  // 컴포넌트 로드 시 메인 데이터를 가져옵니다.
   store.fetchItems();
 });
 </script>
@@ -62,13 +61,14 @@ onMounted(() => {
 
 .title {
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .input-group {
   display: flex;
   gap: 16px;
   margin-bottom: 20px;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -80,6 +80,7 @@ onMounted(() => {
   padding: 0 14px;
   box-sizing: border-box;
   font-size: 16px;
+  border: 1px solid #ccc;
 }
 
 .input-group input {
@@ -100,6 +101,7 @@ onMounted(() => {
 
 .add-btn {
   flex: 0 0 90px;
+  height: 48px;
   background: #ff7aa2;
   color: white;
   border: none;
