@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "salary",
-      "label": "월급",
+      "label": "급여",
       "type": "income"
     },
     {
@@ -809,14 +809,1069 @@
       "memo": "적금",
       "isFixed": true
     },
+
     {
-      "date": "2026-04-08",
+      "id": 85,
+      "date": "2026-04-10",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 12000,
+      "memo": "점심 식사",
+      "isFixed": false
+    },
+    {
+      "id": 86,
+      "date": "2026-04-12",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 45000,
+      "memo": "주말 장보기",
+      "isFixed": false
+    },
+    {
+      "id": 87,
+      "date": "2026-04-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 55000,
+      "memo": "교통카드 충전",
+      "isFixed": false
+    },
+    {
+      "id": 88,
+      "date": "2026-04-18",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 5500,
+      "memo": "아이스 아메리카노",
+      "isFixed": false
+    },
+    {
+      "id": 89,
+      "date": "2026-04-20",
+      "type": "income",
+      "categoryId": 4,
+      "amount": 30000,
+      "memo": "중고물품 판매",
+      "isFixed": false
+    },
+    {
+      "id": 90,
+      "date": "2026-04-22",
+      "type": "expense",
+      "categoryId": 107,
+      "amount": 15000,
+      "memo": "치과 검진",
+      "isFixed": false
+    },
+    {
+      "id": 91,
+      "date": "2026-04-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 92,
+      "date": "2026-04-28",
+      "type": "expense",
+      "categoryId": 108,
+      "amount": 65000,
+      "memo": "봄 의류 구매",
+      "isFixed": false
+    },
+    {
+      "id": 93,
+      "date": "2026-05-02",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 25000,
+      "memo": "주말 외식",
+      "isFixed": false
+    },
+    {
+      "id": 94,
+      "date": "2026-05-05",
       "type": "income",
       "categoryId": 1,
-      "amount": 12345767,
-      "memo": "점심",
-      "isFixed": false,
-      "id": 84
+      "amount": 2500000,
+      "memo": "5월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 95,
+      "date": "2026-05-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "5월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 96,
+      "date": "2026-05-08",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 100000,
+      "memo": "어버이날 선물",
+      "isFixed": false
+    },
+    {
+      "id": 97,
+      "date": "2026-05-10",
+      "type": "expense",
+      "categoryId": 105,
+      "amount": 65000,
+      "memo": "휴대폰 요금",
+      "isFixed": true
+    },
+    {
+      "id": 98,
+      "date": "2026-05-12",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 12000,
+      "memo": "디저트 카페",
+      "isFixed": false
+    },
+    {
+      "id": 99,
+      "date": "2026-05-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 1800,
+      "memo": "지하철 편도",
+      "isFixed": false
+    },
+    {
+      "id": 100,
+      "date": "2026-05-18",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 38000,
+      "memo": "생필품 쇼핑",
+      "isFixed": false
+    },
+    {
+      "id": 101,
+      "date": "2026-05-22",
+      "type": "expense",
+      "categoryId": 109,
+      "amount": 15000,
+      "memo": "영화 관람",
+      "isFixed": false
+    },
+    {
+      "id": 102,
+      "date": "2026-05-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 103,
+      "date": "2026-05-28",
+      "type": "income",
+      "categoryId": 5,
+      "amount": 8000,
+      "memo": "오결제 환불",
+      "isFixed": false
+    },
+    {
+      "id": 104,
+      "date": "2026-06-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 11000,
+      "memo": "평일 점심",
+      "isFixed": false
+    },
+    {
+      "id": 105,
+      "date": "2026-06-03",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 4500,
+      "memo": "편의점 간식",
+      "isFixed": false
+    },
+    {
+      "id": 106,
+      "date": "2026-06-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "6월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 107,
+      "date": "2026-06-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "6월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 108,
+      "date": "2026-06-10",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 52000,
+      "memo": "대형마트 장보기",
+      "isFixed": false
+    },
+    {
+      "id": 109,
+      "date": "2026-06-13",
+      "type": "expense",
+      "categoryId": 107,
+      "amount": 6000,
+      "memo": "약국 상비약",
+      "isFixed": false
+    },
+    {
+      "id": 110,
+      "date": "2026-06-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 55000,
+      "memo": "교통카드 충전",
+      "isFixed": false
+    },
+    {
+      "id": 111,
+      "date": "2026-06-18",
+      "type": "expense",
+      "categoryId": 108,
+      "amount": 35000,
+      "memo": "여름 슬리퍼",
+      "isFixed": false
+    },
+    {
+      "id": 112,
+      "date": "2026-06-21",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 35000,
+      "memo": "친구와 저녁",
+      "isFixed": false
+    },
+    {
+      "id": 113,
+      "date": "2026-06-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 114,
+      "date": "2026-06-28",
+      "type": "expense",
+      "categoryId": 105,
+      "amount": 15000,
+      "memo": "OTT 구독료",
+      "isFixed": true
+    },
+    {
+      "id": 115,
+      "date": "2026-07-02",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 13000,
+      "memo": "여름 별미 식사",
+      "isFixed": false
+    },
+    {
+      "id": 116,
+      "date": "2026-07-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "7월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 117,
+      "date": "2026-07-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "7월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 118,
+      "date": "2026-07-10",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 8000,
+      "memo": "카페 빙수",
+      "isFixed": false
+    },
+    {
+      "id": 119,
+      "date": "2026-07-12",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 78000,
+      "memo": "여름 제철 과일",
+      "isFixed": false
+    },
+    {
+      "id": 120,
+      "date": "2026-07-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 12000,
+      "memo": "택시 이동",
+      "isFixed": false
+    },
+    {
+      "id": 121,
+      "date": "2026-07-18",
+      "type": "expense",
+      "categoryId": 109,
+      "amount": 20000,
+      "memo": "전시회 관람",
+      "isFixed": false
+    },
+    {
+      "id": 122,
+      "date": "2026-07-22",
+      "type": "expense",
+      "categoryId": 108,
+      "amount": 120000,
+      "memo": "여름 휴가용 옷",
+      "isFixed": false
+    },
+    {
+      "id": 123,
+      "date": "2026-07-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 124,
+      "date": "2026-07-30",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 15000,
+      "memo": "야식 배달",
+      "isFixed": false
+    },
+    {
+      "id": 125,
+      "date": "2026-08-01",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 45000,
+      "memo": "고속버스 예매",
+      "isFixed": false
+    },
+    {
+      "id": 126,
+      "date": "2026-08-03",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 25000,
+      "memo": "여행용 간편식",
+      "isFixed": false
+    },
+    {
+      "id": 127,
+      "date": "2026-08-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "8월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 128,
+      "date": "2026-08-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "8월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 129,
+      "date": "2026-08-10",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 50000,
+      "memo": "휴가지 맛집 탐방",
+      "isFixed": false
+    },
+    {
+      "id": 130,
+      "date": "2026-08-15",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 6000,
+      "memo": "관광지 카페",
+      "isFixed": false
+    },
+    {
+      "id": 131,
+      "date": "2026-08-20",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 30000,
+      "memo": "지인 선물",
+      "isFixed": false
+    },
+    {
+      "id": 132,
+      "date": "2026-08-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 133,
+      "date": "2026-08-28",
+      "type": "income",
+      "categoryId": 4,
+      "amount": 15000,
+      "memo": "중고책 판매",
+      "isFixed": false
+    },
+    {
+      "id": 134,
+      "date": "2026-09-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 12000,
+      "memo": "점심 식사",
+      "isFixed": false
+    },
+    {
+      "id": 135,
+      "date": "2026-09-04",
+      "type": "expense",
+      "categoryId": 105,
+      "amount": 65000,
+      "memo": "휴대폰 요금",
+      "isFixed": true
+    },
+    {
+      "id": 136,
+      "date": "2026-09-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "9월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 137,
+      "date": "2026-09-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "9월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 138,
+      "date": "2026-09-10",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 150000,
+      "memo": "추석 부모님 용돈",
+      "isFixed": false
+    },
+    {
+      "id": 139,
+      "date": "2026-09-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 35000,
+      "memo": "귀성길 주유",
+      "isFixed": false
+    },
+    {
+      "id": 140,
+      "date": "2026-09-20",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 42000,
+      "memo": "명절 이후 장보기",
+      "isFixed": false
+    },
+    {
+      "id": 141,
+      "date": "2026-09-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 142,
+      "date": "2026-10-02",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 18000,
+      "memo": "주말 외식",
+      "isFixed": false
+    },
+    {
+      "id": 143,
+      "date": "2026-10-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "10월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 144,
+      "date": "2026-10-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "10월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 145,
+      "date": "2026-10-10",
+      "type": "expense",
+      "categoryId": 108,
+      "amount": 95000,
+      "memo": "가을 코트 구매",
+      "isFixed": false
+    },
+    {
+      "id": 146,
+      "date": "2026-10-13",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 5000,
+      "memo": "따뜻한 라떼",
+      "isFixed": false
+    },
+    {
+      "id": 147,
+      "date": "2026-10-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 55000,
+      "memo": "교통카드 충전",
+      "isFixed": false
+    },
+    {
+      "id": 148,
+      "date": "2026-10-18",
+      "type": "expense",
+      "categoryId": 107,
+      "amount": 25000,
+      "memo": "건강검진 추가금",
+      "isFixed": false
+    },
+    {
+      "id": 149,
+      "date": "2026-10-22",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 33000,
+      "memo": "주방용품 교체",
+      "isFixed": false
+    },
+    {
+      "id": 150,
+      "date": "2026-10-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 151,
+      "date": "2026-10-28",
+      "type": "income",
+      "categoryId": 4,
+      "amount": 50000,
+      "memo": "단기 아르바이트",
+      "isFixed": false
+    },
+    {
+      "id": 152,
+      "date": "2026-11-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 11000,
+      "memo": "구내식당 이용",
+      "isFixed": false
+    },
+    {
+      "id": 153,
+      "date": "2026-11-04",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 4800,
+      "memo": "테이크아웃 커피",
+      "isFixed": false
+    },
+    {
+      "id": 154,
+      "date": "2026-11-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "11월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 155,
+      "date": "2026-11-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "11월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 156,
+      "date": "2026-11-10",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 85000,
+      "memo": "겨울 대비 장보기",
+      "isFixed": false
+    },
+    {
+      "id": 157,
+      "date": "2026-11-14",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 15000,
+      "memo": "늦은 밤 택시",
+      "isFixed": false
+    },
+    {
+      "id": 158,
+      "date": "2026-11-18",
+      "type": "expense",
+      "categoryId": 108,
+      "amount": 42000,
+      "memo": "보온 내의 세트",
+      "isFixed": false
+    },
+    {
+      "id": 159,
+      "date": "2026-11-22",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 14000,
+      "memo": "뜨끈한 국밥 정식",
+      "isFixed": false
+    },
+    {
+      "id": 160,
+      "date": "2026-11-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 161,
+      "date": "2026-11-28",
+      "type": "expense",
+      "categoryId": 109,
+      "amount": 12000,
+      "memo": "신간 도서 구매",
+      "isFixed": false
+    },
+    {
+      "id": 162,
+      "date": "2026-12-02",
+      "type": "expense",
+      "categoryId": 107,
+      "amount": 8000,
+      "memo": "독감 약 처방",
+      "isFixed": false
+    },
+    {
+      "id": 163,
+      "date": "2026-12-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "12월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 164,
+      "date": "2026-12-06",
+      "type": "income",
+      "categoryId": 2,
+      "amount": 500000,
+      "memo": "연말 인센티브",
+      "isFixed": false
+    },
+    {
+      "id": 165,
+      "date": "2026-12-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "12월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 166,
+      "date": "2026-12-10",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 45000,
+      "memo": "송년회 모임",
+      "isFixed": false
+    },
+    {
+      "id": 167,
+      "date": "2026-12-13",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 39000,
+      "memo": "크리스마스 홈파티 장보기",
+      "isFixed": false
+    },
+    {
+      "id": 168,
+      "date": "2026-12-15",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 55000,
+      "memo": "교통카드 충전",
+      "isFixed": false
+    },
+    {
+      "id": 169,
+      "date": "2026-12-18",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 7500,
+      "memo": "시즌 음료",
+      "isFixed": false
+    },
+    {
+      "id": 170,
+      "date": "2026-12-22",
+      "type": "expense",
+      "categoryId": 108,
+      "amount": 88000,
+      "memo": "지인 크리스마스 선물",
+      "isFixed": false
+    },
+    {
+      "id": 171,
+      "date": "2026-12-24",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 65000,
+      "memo": "이브 특별 외식",
+      "isFixed": false
+    },
+    {
+      "id": 172,
+      "date": "2026-12-25",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 20000,
+      "memo": "크리스마스 케이크",
+      "isFixed": false
+    },
+    {
+      "id": 173,
+      "date": "2026-12-27",
+      "type": "expense",
+      "categoryId": 105,
+      "amount": 65000,
+      "memo": "휴대폰 요금",
+      "isFixed": true
+    },
+    {
+      "id": 174,
+      "date": "2026-12-31",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 30000,
+      "memo": "제야의 종 소리 보며 야식",
+      "isFixed": false
+    },
+    {
+      "id": 175,
+      "date": "2026-04-15",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 10500,
+      "memo": "김치찌개",
+      "isFixed": false
+    },
+    {
+      "id": 176,
+      "date": "2026-05-20",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 5200,
+      "memo": "라떼 한 잔",
+      "isFixed": false
+    },
+    {
+      "id": 177,
+      "date": "2026-06-25",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 1450,
+      "memo": "버스 요금",
+      "isFixed": false
+    },
+    {
+      "id": 178,
+      "date": "2026-07-30",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 12500,
+      "memo": "샐러드 도시락",
+      "isFixed": false
+    },
+    {
+      "id": 179,
+      "date": "2026-08-15",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 32000,
+      "memo": "동네 마트",
+      "isFixed": false
+    },
+    {
+      "id": 180,
+      "date": "2026-09-10",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 9500,
+      "memo": "편의점 식사",
+      "isFixed": false
+    },
+    {
+      "id": 181,
+      "date": "2026-10-05",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 4000,
+      "memo": "단팥빵",
+      "isFixed": false
+    },
+    {
+      "id": 182,
+      "date": "2026-11-15",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 11000,
+      "memo": "돈까스",
+      "isFixed": false
+    },
+    {
+      "id": 183,
+      "date": "2026-12-20",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 18500,
+      "memo": "과일 조금",
+      "isFixed": false
+    },
+    {
+      "id": 184,
+      "date": "2026-12-30",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 1600,
+      "memo": "마을버스",
+      "isFixed": false
+    },
+    {
+      "id": 186,
+      "date": "2025-12-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 12000,
+      "memo": "평일 점심 식사",
+      "isFixed": false
+    },
+    {
+      "id": 188,
+      "date": "2025-12-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "12월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 189,
+      "date": "2025-12-10",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 5000,
+      "memo": "겨울 간식(붕어빵)",
+      "isFixed": false
+    },
+    {
+      "id": 190,
+      "date": "2025-12-15",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 42000,
+      "memo": "겨울용 생필품 구매",
+      "isFixed": false
+    },
+    {
+      "id": 191,
+      "date": "2025-12-20",
+      "type": "expense",
+      "categoryId": 109,
+      "amount": 15000,
+      "memo": "연말 영화 관람",
+      "isFixed": false
+    },
+    {
+      "id": 192,
+      "date": "2025-12-24",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 85000,
+      "memo": "크리스마스 이브 외식",
+      "isFixed": false
+    },
+    {
+      "id": 193,
+      "date": "2025-12-25",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 30000,
+      "memo": "크리스마스 케이크",
+      "isFixed": false
+    },
+    {
+      "id": 194,
+      "date": "2025-12-28",
+      "type": "expense",
+      "categoryId": 104,
+      "amount": 18000,
+      "memo": "연말 모임 이동 택시비",
+      "isFixed": false
+    },
+
+    {
+      "id": 196,
+      "date": "2026-03-01",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 15000,
+      "memo": "휴일 브런치",
+      "isFixed": false
+    },
+    {
+      "id": 197,
+      "date": "2026-03-05",
+      "type": "income",
+      "categoryId": 1,
+      "amount": 2500000,
+      "memo": "3월 월급",
+      "isFixed": true
+    },
+    {
+      "id": 198,
+      "date": "2026-03-07",
+      "type": "expense",
+      "categoryId": 106,
+      "amount": 550000,
+      "memo": "3월 월세",
+      "isFixed": true
+    },
+    {
+      "id": 199,
+      "date": "2026-03-10",
+      "type": "expense",
+      "categoryId": 102,
+      "amount": 6500,
+      "memo": "따뜻한 봄날 카페",
+      "isFixed": false
+    },
+    {
+      "id": 200,
+      "date": "2026-03-12",
+      "type": "expense",
+      "categoryId": 103,
+      "amount": 28000,
+      "memo": "봄맞이 청소용품",
+      "isFixed": false
+    },
+    {
+      "id": 201,
+      "date": "2026-03-14",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 40000,
+      "memo": "화이트데이 선물",
+      "isFixed": false
+    },
+    {
+      "id": 202,
+      "date": "2026-03-18",
+      "type": "expense",
+      "categoryId": 101,
+      "amount": 11000,
+      "memo": "평일 점심",
+      "isFixed": false
+    },
+    {
+      "id": 203,
+      "date": "2026-03-22",
+      "type": "expense",
+      "categoryId": 107,
+      "amount": 8000,
+      "memo": "환절기 비염약",
+      "isFixed": false
+    },
+    {
+      "id": 204,
+      "date": "2026-03-25",
+      "type": "expense",
+      "categoryId": 113,
+      "amount": 300000,
+      "memo": "정기 적금",
+      "isFixed": true
+    },
+    {
+      "id": 205,
+      "date": "2026-03-28",
+      "type": "income",
+      "categoryId": 4,
+      "amount": 45000,
+      "memo": "안 쓰는 물건 판매",
+      "isFixed": false
     }
   ]
 }

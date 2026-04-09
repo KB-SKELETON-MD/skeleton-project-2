@@ -6,33 +6,35 @@
       <div class="input-group">
         <input
           type="text"
-          v-model.trim="newItem.text"
+          v-model.trim="store.newItem.text"
           placeholder="거래 내용을 입력하세요"
-          @keyup.enter="addItem"
+          @keyup.enter="store.addItem"
         />
 
         <input
           type="number"
-          v-model.number="newItem.amount"
+          v-model.number="store.newItem.amount"
           placeholder="금액"
-          @keyup.enter="addItem"
+          @keyup.enter="store.addItem"
         />
 
-        <select v-model="newItem.type">
+        <select v-model="store.newItem.type">
           <option value="expense">지출</option>
           <option value="income">수입</option>
         </select>
 
-        <button class="add-btn" @click="addItem">추가</button>
+        <button class="add-btn" @click="store.addItem">추가</button>
       </div>
 
       <ul class="list">
-        <li v-for="item in items" :key="item.id" class="list-item">
-          <span>
-            {{ item.type === 'expense' ? '지출' : '수입' }} / {{ item.memo }} /
-            {{ item.amount.toLocaleString() }}원
-          </span>
-          <button class="delete-btn" @click="deleteItem(item.id)">삭제</button>
+        <li v-for="item in store.items" :key="item.id" class="list-item">
+          <span> {{ item.date }} </span>
+          <span>{{ item.type === 'expense' ? '지출' : '수입' }} </span>
+          <span>{{ item.memo }} </span>
+          <span>{{ item.amount.toLocaleString() }}원 </span>
+          <button class="delete-btn" @click="store.deleteItem(item.id)">
+            삭제
+          </button>
         </li>
       </ul>
     </div>
@@ -40,65 +42,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { onMounted } from 'vue';
+import { useAddStore } from '@/stores/add';
 
-const API_URL = 'http://localhost:3000/transactions';
-
-const newItem = ref({
-  text: '',
-  amount: null,
-  type: 'expense',
-});
-
-const items = ref([]);
-
-const fetchItems = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    items.value = response.data;
-  } catch (error) {
-    console.error('데이터 불러오기 실패:', error);
-  }
-};
-
-const addItem = async () => {
-  if (!newItem.value.text || !newItem.value.amount) return;
-
-  const newData = {
-    date: new Date().toISOString().slice(0, 10),
-    type: newItem.value.type,
-    categoryId: newItem.value.type === 'expense' ? 114 : 1,
-    amount: newItem.value.amount,
-    memo: newItem.value.text,
-    isFixed: false,
-  };
-
-  try {
-    await axios.post(API_URL, newData);
-    await fetchItems();
-
-    newItem.value = {
-      text: '',
-      amount: null,
-      type: 'expense',
-    };
-  } catch (error) {
-    console.error('데이터 추가 실패:', error);
-  }
-};
-
-const deleteItem = async (id) => {
-  try {
-    await axios.delete(`${API_URL}/${id}`);
-    items.value = items.value.filter((item) => item.id !== id);
-  } catch (error) {
-    console.error('데이터 삭제 실패:', error);
-  }
-};
+const store = useAddStore();
 
 onMounted(() => {
-  fetchItems();
+  store.fetchItems();
 });
 </script>
 
@@ -111,13 +61,14 @@ onMounted(() => {
 
 .title {
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .input-group {
   display: flex;
   gap: 16px;
   margin-bottom: 20px;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -129,6 +80,7 @@ onMounted(() => {
   padding: 0 14px;
   box-sizing: border-box;
   font-size: 16px;
+  border: 1px solid #ccc;
 }
 
 .input-group input {
@@ -149,6 +101,7 @@ onMounted(() => {
 
 .add-btn {
   flex: 0 0 90px;
+  height: 48px;
   background: #ff7aa2;
   color: white;
   border: none;

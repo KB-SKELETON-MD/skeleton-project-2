@@ -39,7 +39,10 @@
     </section>
 
     <section class="bottom-row">
-      <article class="card-pink transaction-list">
+      <button
+        class="card-pink transaction-list"
+        @click="$router.push('/transactions')"
+      >
         <h3><strong>최근 거래 내역</strong></h3>
         <div
           v-for="item in latestItems"
@@ -47,10 +50,11 @@
           class="transaction-item"
         >
           <span>{{ item.date.slice(5) }}</span>
+          <hr />
           <span>{{ item.memo }}</span>
           <span :class="item.type">{{ item.amount.toLocaleString() }}원</span>
         </div>
-      </article>
+      </button>
 
       <article class="card-pink chart-box" @click="$router.push('/report')">
         <Chart />
@@ -79,7 +83,6 @@ const store = useFinanceStore();
 const latestItems = computed(() =>
   [...store.filteredTransactions].reverse().slice(0, 5),
 );
-1;
 onMounted(() => {
   if (store.transactions.length === 0) store.fetchData();
 });
