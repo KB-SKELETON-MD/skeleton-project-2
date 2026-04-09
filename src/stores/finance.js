@@ -12,7 +12,7 @@ export const useFinanceStore = defineStore('finance', () => {
   const fetchData = async () => {
     try {
       isLoading.value = true;
-      const response = await axios.get('/db.json');
+      const response = await axios.get('http://localhost:3000/db');
       transactions.value = response.data.transactions || [];
       categories.value = response.data.categories || [];
     } catch (e) {
@@ -21,6 +21,28 @@ export const useFinanceStore = defineStore('finance', () => {
       isLoading.value = false;
     }
   };
+
+  const categoryExpenseData = computed(() => {
+    const totals = {};
+
+    filteredTransactions.value
+      .filter((t) => t.type === 'expense')
+      .forEach((t) => {
+        const catId = t.categoryId || 'unknown';
+        if (!totals[catId]) totals[catId] = 0;
+        totals[catId] += t.amount;
+      });
+
+    return Object.entries(totals).map(([id, amount]) => {
+      const categoryInfo = categories.value.find((c) => c.id === Number(id));
+
+      return {
+        name: categoryInfo ? categoryInfo.label : '기타',
+        amount: amount,
+        color: categoryInfo && categoryInfo.color ? categoryInfo.color : null,
+      };
+    });
+  });
 
   const setMonth = (delta) => {
     currentMonth.value += delta;
@@ -56,8 +78,8 @@ export const useFinanceStore = defineStore('finance', () => {
   const netProfit = computed(() => totalIncome.value - totalExpense.value);
 
   return {
-    transactions,
     categories,
+    transactions,
     currentYear,
     currentMonth,
     isLoading,
@@ -67,5 +89,6 @@ export const useFinanceStore = defineStore('finance', () => {
     totalExpense,
     netProfit,
     filteredTransactions,
+    categoryExpenseData,
   };
 });
