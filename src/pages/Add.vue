@@ -1,18 +1,5 @@
 <template>
   <div class="account-book-page">
-    <header class="top-bar">
-      <div class="brand-area">
-        <img src="@/assets/logos.png" alt="가계쀼 로고" class="logo-icon" />
-        <span class="brand-name">가계쀼</span>
-      </div>
-
-      <div class="top-actions">
-        <button class="icon-btn">🔍</button>
-        <button class="icon-btn">📅</button>
-        <button class="profile-circle"></button>
-      </div>
-    </header>
-
     <div class="add-wrap">
       <h2 class="title">거래 내역 추가</h2>
 

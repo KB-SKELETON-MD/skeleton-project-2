@@ -7,74 +7,22 @@ export const useFinanceStore = defineStore('finance', () => {
   const transactions = ref([]);
   const currentYear = ref(2025);
   const currentMonth = ref(3);
-
-  const income = computed(() => {
-    return transactions.value
-      .filter((t) => {
-        const d = new Date(t.date);
-        return (
-          d.getFullYear() === currentYear.value &&
-          d.getMonth() + 1 === currentMonth.value &&
-          t.type === 'income'
-        );
-      })
-      .reduce((sum, t) => sum + t.amount, 0);
-  });
-  const categoryTotals = computed(() => {
-    const totals = {};
-
-    // 이번 달 지출만 필터링해서 카테고리별로 합산
-    transactions.value
-      .filter((t) => {
-        const d = new Date(t.date);
-        return (
-          d.getFullYear() === currentYear.value &&
-          d.getMonth() + 1 === currentMonth.value &&
-          t.type === 'expense'
-        );
-      })
-      .forEach((t) => {
-        if (!totals[t.category]) totals[t.category] = 0;
-        totals[t.category] += t.amount;
-      });
-
-    // db.json의 categories 배열 정보(색상 등)와 합치기
-    return Object.entries(totals).map(([name, amount]) => {
-      const categoryInfo = categories.value.find((c) => c.name === name);
-      return {
-        name,
-        amount,
-        color: categoryInfo ? categoryInfo.color : '#cccccc', // 색상 정보가 없으면 회색
-      };
-    });
-  });
-
-  const expense = computed(() => {
-    return transactions.value
-      .filter((t) => {
-        const d = new Date(t.date);
-        return (
-          d.getFullYear() === currentYear.value &&
-          d.getMonth() + 1 === currentMonth.value &&
-          t.type === 'expense'
-        );
-      })
-      .reduce((sum, t) => sum + t.amount, 0);
-  });
-
-  const revenue = computed(() => income.value - expense.value);
+  const isLoading = ref(false);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/transactions');
-      axios.get('http://localhost:3000/categories');
-      transactions.value = response.data;
-    } catch (error) {
-      console.error('창고 데이터 로드 실패:', error);
+      isLoading.value = true;
+      const response = await axios.get('/db.json');
+      transactions.value = response.data.transactions || [];
+      categories.value = response.data.categories || [];
+    } catch (e) {
+      console.error('데이터 로드 실패:', e);
+    } finally {
+      isLoading.value = false;
     }
   };
 
-  const changeMonth = (delta) => {
+  const setMonth = (delta) => {
     currentMonth.value += delta;
     if (currentMonth.value > 12) {
       currentMonth.value = 1;
@@ -86,13 +34,38 @@ export const useFinanceStore = defineStore('finance', () => {
     }
   };
 
+  const filteredTransactions = computed(() => {
+    const target = `${currentYear.value}-${String(currentMonth.value).padStart(2, '0')}`;
+    return transactions.value.filter(
+      (t) => t.date && t.date.startsWith(target),
+    );
+  });
+
+  const totalIncome = computed(() =>
+    filteredTransactions.value
+      .filter((t) => t.type === 'income')
+      .reduce((sum, t) => sum + t.amount, 0),
+  );
+
+  const totalExpense = computed(() =>
+    filteredTransactions.value
+      .filter((t) => t.type === 'expense')
+      .reduce((sum, t) => sum + t.amount, 0),
+  );
+
+  const netProfit = computed(() => totalIncome.value - totalExpense.value);
+
   return {
+    transactions,
+    categories,
     currentYear,
     currentMonth,
-    income,
-    expense,
-    revenue,
+    isLoading,
     fetchData,
-    changeMonth,
+    setMonth,
+    totalIncome,
+    totalExpense,
+    netProfit,
+    filteredTransactions,
   };
 });

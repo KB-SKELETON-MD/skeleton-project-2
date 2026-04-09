@@ -48,14 +48,14 @@ const router = createRouter({
       component: Expense,
     },
     {
-      path: '/:pathMatch(.*)*',
-      name: 'NotFound',
-      component: NotFound,
-    },
-    {
       path: '/add',
       name: 'add',
       component: Add,
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound,
     },
   ],
 });

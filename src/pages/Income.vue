@@ -2,7 +2,7 @@
   <div class="page-container">
     <header class="list-header">
       <button class="back-btn" @click="$router.back()">◀</button>
-      <h2>{{ financeStore.currentMonth }}월 수입 내역</h2>
+      <h2>{{ tradeInfoStore.currentMonth }}월 수입 내역</h2>
     </header>
 
     <div class="list-wrapper">
@@ -28,11 +28,11 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useFinanceStore } from '@/stores/tradeInfo';
-const financeStore = useFinanceStore();
+import { useTradeInfoStore } from '@/stores/tradeInfo';
+const tradeInfoStore = useTradeInfoStore();
 
 const incomeList = computed(() =>
-  financeStore.filteredTransactions.filter((t) => t.type === 'income'),
+  tradeInfoStore.filteredTransactions.filter((t) => t.type === 'income'),
 );
 </script>
 
