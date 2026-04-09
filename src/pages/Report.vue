@@ -2,127 +2,58 @@
   <div class="dashboard-page">
     <div class="month-selector">
       <div class="month-bar">
-        <button class="arrow-btn" @click="changeMonth(-1)"><</button>
+        <button class="arrow-btn" @click="store.changeMonth(-1)"><</button>
         <span class="current-date"
-          >{{ currentYear }}년 {{ currentMonth }}월</span
+          >{{ store.currentYear }}년 {{ store.currentMonth }}월</span
         >
-        <button class="arrow-btn" @click="changeMonth(+1)">></button>
+        <button class="arrow-btn" @click="store.changeMonth(1)">></button>
       </div>
     </div>
 
     <div class="center-graph">
       <div class="chart-bar">
-        <span class="amount-label">{{ income.toLocaleString() }}원</span>
+        <span class="amount-label">{{ store.income.toLocaleString() }}원</span>
         <div
           class="income-chart"
-          :style="{ height: incomeHeight + 'px' }"
+          :style="{ height: store.incomeHeight + 'px' }"
         ></div>
         <span>총수입</span>
       </div>
 
       <div class="chart-bar">
-        <span class="amount-label">{{ expense.toLocaleString() }}원</span>
+        <span class="amount-label">{{ store.expense.toLocaleString() }}원</span>
         <div
           class="expense-chart"
-          :style="{ height: expenseHeight + 'px' }"
+          :style="{ height: store.expenseHeight + 'px' }"
         ></div>
         <span>지출</span>
       </div>
 
       <div class="chart-bar">
-        <span class="amount-label">{{ revenue.toLocaleString() }}원</span>
+        <span class="amount-label">{{ store.revenue.toLocaleString() }}원</span>
         <div
           class="revenue-chart"
-          :style="{ height: revenueHeight + 'px' }"
+          :style="{ height: store.revenueHeight + 'px' }"
         ></div>
         <span>순수익</span>
       </div>
     </div>
   </div>
 </template>
-
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { useReportStore } from '@/stores/report';
 
-const router = useRouter();
+// 리포트 전담 스토어 호출
+const store = useReportStore();
 
-// --- 1. 상태 변수 선언  ---
-const transactions = ref([]); // 서버 데이터를 담을 배열
-const currentYear = ref(2025); // 2025년 데이터가 많으므로 2025로 시작
-const currentMonth = ref(3); // 데이터가 있는 3월로 기본 설정
-
-// --- 2. 데이터 불러오기 함수 ---
-const fetchData = async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/transactions');
-    transactions.value = response.data;
-  } catch (error) {
-    console.error('데이터 로딩 실패:', error);
+onMounted(() => {
+  // 메인 데이터가 비어있을 때만 데이터를 가져옵니다.
+  // (Home에서 이미 가져왔다면 이 과정은 생략되어 속도가 빨라집니다!)
+  if (store.income === 0 && store.expense === 0) {
+    store.fetchData();
   }
-};
-
-// --- 3. 필터링 및 합계 계산 (Computed) ---
-const income = computed(() => {
-  if (!transactions.value) return 0;
-  return transactions.value
-    .filter((t) => {
-      const d = new Date(t.date);
-      return (
-        d.getFullYear() === currentYear.value &&
-        d.getMonth() + 1 === currentMonth.value &&
-        t.type === 'income'
-      );
-    })
-    .reduce((sum, t) => sum + t.amount, 0);
 });
-
-const expense = computed(() => {
-  if (!transactions.value) return 0;
-  return transactions.value
-    .filter((t) => {
-      const d = new Date(t.date);
-      return (
-        d.getFullYear() === currentYear.value &&
-        d.getMonth() + 1 === currentMonth.value &&
-        t.type === 'expense'
-      );
-    })
-    .reduce((sum, t) => sum + t.amount, 0);
-});
-
-const revenue = computed(() => income.value - expense.value);
-
-const max_height = 150;
-const max_value = computed(() => {
-  const values = [income.value, expense.value, Math.abs(revenue.value)];
-  return Math.max(...values, 1);
-});
-
-const incomeHeight = computed(
-  () => (income.value / max_value.value) * max_height,
-);
-const expenseHeight = computed(
-  () => (expense.value / max_value.value) * max_height,
-);
-const revenueHeight = computed(
-  () => (Math.abs(revenue.value) / max_value.value) * max_height,
-);
-
-onMounted(fetchData);
-
-const changeMonth = (delta) => {
-  currentMonth.value += delta;
-  if (currentMonth.value > 12) {
-    currentMonth.value = 1;
-    currentYear.value++;
-  }
-  if (currentMonth.value < 1) {
-    currentMonth.value = 12;
-    currentYear.value--;
-  }
-};
 </script>
 
 <style scoped>

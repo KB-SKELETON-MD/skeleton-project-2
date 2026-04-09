@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "salary",
-      "label": "월급",
+      "label": "급여",
       "type": "income"
     },
     {
@@ -98,15 +98,6 @@
     }
   ],
   "transactions": [
-    {
-      "id": 1,
-      "date": "2025-03-02",
-      "type": "expense",
-      "categoryId": 101,
-      "amount": 13500,
-      "memo": "점심",
-      "isFixed": false
-    },
     {
       "id": 2,
       "date": "2025-03-05",
@@ -810,11 +801,11 @@
       "isFixed": true
     },
     {
-      "date": "2026-04-08",
-      "type": "income",
-      "categoryId": 1,
-      "amount": 12345767,
-      "memo": "점심",
+      "date": "2026-04-09",
+      "type": "expense",
+      "categoryId": 114,
+      "amount": 100,
+      "memo": "막걸리",
       "isFixed": false,
       "id": 84
     }
