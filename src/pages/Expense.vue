@@ -5,7 +5,6 @@
       <h2>{{ store.currentMonth }}월 지출 내역</h2>
     </header>
 
-<<<<<<< HEAD
     <div class="search-box">
       <input
         v-model.trim="searchQuery"
@@ -15,7 +14,8 @@
       />
       <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">
         ✕
-=======
+      </button>
+    </div>
     <div class="category-filter-bar">
       <button
         :class="['filter-btn', { active: store.selectedCategoryId === null }]"
@@ -31,7 +31,6 @@
         @click="store.setCategory(cat.id)"
       >
         {{ cat.label }}
->>>>>>> origin/feature/JK2
       </button>
     </div>
 
@@ -62,11 +61,7 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
-import { computed, ref } from 'vue';
-=======
-import { computed, onUnmounted } from 'vue';
->>>>>>> origin/feature/JK2
+import { computed, ref, onUnmounted } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
 
 const store = useFinanceStore();
@@ -80,7 +75,6 @@ const expenseList = computed(() =>
   store.filteredTransactions.filter((t) => t.type === 'expense'),
 );
 
-<<<<<<< HEAD
 const searchedExpenseList = computed(() => {
   const keyword = searchQuery.value.toLowerCase().trim();
 
@@ -100,9 +94,7 @@ const searchedExpenseList = computed(() => {
     );
   });
 });
-=======
 onUnmounted(() => store.setCategory(null));
->>>>>>> origin/feature/JK2
 </script>
 
 <style scoped>
@@ -113,7 +105,6 @@ onUnmounted(() => store.setCategory(null));
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
 .list-header {
   display: flex;
   align-items: center;
@@ -160,7 +151,6 @@ onUnmounted(() => store.setCategory(null));
   font-size: 0.95rem;
 }
 
-=======
 /* 1. 헤더 컨테이너: 전체적인 정렬과 간격 */
 .list-header {
   display: flex;
@@ -248,7 +238,6 @@ onUnmounted(() => store.setCategory(null));
 }
 
 /* 4. 지출 목록: 모바일 대응 레이아웃 */
->>>>>>> origin/feature/JK2
 .list-item {
   display: flex;
   justify-content: space-between;
@@ -261,7 +250,6 @@ onUnmounted(() => store.setCategory(null));
   transition: transform 0.2s;
 }
 
-<<<<<<< HEAD
 .item-info {
   display: flex;
   flex-direction: column;
@@ -277,13 +265,6 @@ onUnmounted(() => store.setCategory(null));
   font-weight: 600;
 }
 
-.empty-msg {
-  text-align: center;
-  padding: 50px 0;
-  color: #999;
-}
-
-=======
 .list-item:active {
   transform: scale(0.98); /* 터치 시 눌리는 효과 */
 }
@@ -370,7 +351,6 @@ onUnmounted(() => store.setCategory(null));
   color: #bbb;
 }
 
->>>>>>> origin/feature/JK2
 .expense-text {
   color: #d14c4c;
 }

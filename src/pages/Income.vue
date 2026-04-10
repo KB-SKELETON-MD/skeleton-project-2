@@ -5,7 +5,6 @@
       <h2>{{ store.currentMonth }}월 수입 내역</h2>
     </header>
 
-<<<<<<< HEAD
     <div class="search-box">
       <input
         v-model.trim="searchQuery"
@@ -15,7 +14,8 @@
       />
       <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">
         ✕
-=======
+      </button>
+    </div>
     <div class="category-filter-bar">
       <button
         :class="['filter-btn', { active: store.selectedCategoryId === null }]"
@@ -31,7 +31,6 @@
         @click="store.setCategory(cat.id)"
       >
         {{ cat.label }}
->>>>>>> origin/feature/JK2
       </button>
     </div>
 
@@ -62,11 +61,7 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
-import { computed, ref } from 'vue';
-=======
-import { computed, onUnmounted } from 'vue';
->>>>>>> origin/feature/JK2
+import { computed, ref, onUnmounted } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
 
 const store = useFinanceStore();
@@ -80,7 +75,6 @@ const incomeList = computed(() =>
   store.filteredTransactions.filter((t) => t.type === 'income'),
 );
 
-<<<<<<< HEAD
 const searchedIncomeList = computed(() => {
   const keyword = searchQuery.value.toLowerCase().trim();
 
@@ -100,10 +94,8 @@ const searchedIncomeList = computed(() => {
     );
   });
 });
-=======
 // 페이지를 떠날 때 다른 페이지에 영향 주지 않도록 필터 리셋
 onUnmounted(() => store.setCategory(null));
->>>>>>> origin/feature/JK2
 </script>
 
 <style scoped>
@@ -137,7 +129,6 @@ onUnmounted(() => store.setCategory(null));
   box-shadow: 0 2px 5px rgba(251, 194, 215, 0.3);
 }
 
-<<<<<<< HEAD
 .search-box {
   position: relative;
   margin-bottom: 18px;
@@ -170,7 +161,6 @@ onUnmounted(() => store.setCategory(null));
   font-size: 0.95rem;
 }
 
-=======
 .back-btn:hover {
   background-color: #fbc2d7;
   color: white;
@@ -216,7 +206,6 @@ onUnmounted(() => store.setCategory(null));
 }
 
 /* 4. 리스트 아이템 디자인 */
->>>>>>> origin/feature/JK2
 .list-item {
   display: flex;
   justify-content: space-between;
@@ -231,27 +220,12 @@ onUnmounted(() => store.setCategory(null));
 .item-info {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   gap: 4px;
 }
 
 .item-date {
   font-size: 0.8rem;
   color: #888;
-}
-
-.item-memo {
-  font-weight: 600;
-}
-
-.empty-msg {
-  text-align: center;
-  padding: 50px 0;
-  color: #999;
-}
-
-=======
-  gap: 6px;
 }
 
 .item-memo {
@@ -265,7 +239,6 @@ onUnmounted(() => store.setCategory(null));
 }
 
 /* 5. 수입 전용: 초록색 텍스트 포인트 */
->>>>>>> origin/feature/JK2
 .income-text {
   color: #4cd170; /* 수입의 상징 초록색 */
   font-weight: bold;
