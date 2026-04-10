@@ -43,7 +43,7 @@
         class="card-pink transaction-list"
         @click="$router.push('/transactions')"
       >
-        <h3><strong>최근 거래 내역</strong></h3>
+        <p><strong>최근 거래 내역</strong></p>
 
         <div
           v-for="item in latestItems"
@@ -60,7 +60,7 @@
 
       <article class="card-pink chart-box" @click="$router.push('/report')">
         <div class="report-header">
-          <strong>상세 리포트 보기</strong>
+          <p><strong>상세 리포트 보기</strong></p>
         </div>
         <Chart />
       </article>
@@ -70,7 +70,10 @@
           + 추가하기
         </button>
         <div class="illust-wrap" style="text-align: center">
-          <img src="@/assets/couple.png" alt="커플사진" class="couple-img" />
+          <img src="@/assets/character.png" alt="커플사진" class="couple-img" />
+          <div class="textbox">
+            <img src="@/assets/bottomtext.png" alt="커플텍스트" width="200px" />
+          </div>
         </div>
       </aside>
     </section>
@@ -101,10 +104,11 @@ onMounted(() => {
   width: 100%;
   padding: 24px 20px;
   border: none;
-  background-color: #e9b6c7;
+  background-color: #f8edee;
   border-radius: 24px;
   cursor: pointer;
   text-align: left;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .transaction-list h3 {
@@ -112,7 +116,6 @@ onMounted(() => {
   margin-bottom: 20px;
   font-size: 28px;
   font-weight: 700;
-  color: #222;
 }
 
 .transaction-item {
@@ -147,13 +150,5 @@ onMounted(() => {
   text-align: right;
   font-size: 18px;
   font-weight: 700;
-}
-
-.transaction-amount.income {
-  color: #2563eb;
-}
-
-.transaction-amount.expense {
-  color: #111;
 }
 </style>
