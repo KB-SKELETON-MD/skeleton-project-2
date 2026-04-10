@@ -17,24 +17,33 @@
     <section class="summary-grid">
       <div class="summary-card income" @click="$router.push('/income')">
         <p><strong>총수입</strong></p>
-        <strong>+ {{ store.totalIncome.toLocaleString() }}원</strong>
+        <br />
+        <h1>
+          <b>+ {{ store.totalIncome.toLocaleString() }}원</b>
+        </h1>
       </div>
 
       <div class="summary-card expense" @click="$router.push('/expense')">
         <p><strong>지출</strong></p>
-        <strong>- {{ store.totalExpense.toLocaleString() }}원</strong>
+        <br />
+        <h1>
+          <b>- {{ store.totalExpense.toLocaleString() }}원</b>
+        </h1>
       </div>
 
       <div class="summary-card profit">
         <p><strong>순수익</strong></p>
-        <strong
+        <br />
+        <h1
           :style="{
             color: store.netProfit >= 0 ? '#0284c7' : '#d14c4c',
           }"
         >
-          {{ store.netProfit >= 0 ? '+' : ''
-          }}{{ store.netProfit.toLocaleString() }}원
-        </strong>
+          <b>
+            {{ store.netProfit >= 0 ? '+' : ''
+            }}{{ store.netProfit.toLocaleString() }}원
+          </b>
+        </h1>
       </div>
     </section>
 
@@ -52,7 +61,8 @@
           <span>{{ item.date.slice(5) }}</span>
           <hr />
           <span>{{ item.memo }}</span>
-          <span :class="item.type">{{ item.amount.toLocaleString() }}원</span>
+          <hr />
+          <span>{{ item.amount.toLocaleString() }}원</span>
         </div>
       </button>
 
