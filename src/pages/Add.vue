@@ -26,17 +26,31 @@
         <button class="add-btn" @click="store.addItem">추가</button>
       </div>
 
-      <ul class="list">
-        <li v-for="item in store.items" :key="item.id" class="list-item">
-          <span> {{ item.date }} </span>
-          <span>{{ item.type === 'expense' ? '지출' : '수입' }} </span>
-          <span>{{ item.memo }} </span>
-          <span>{{ item.amount.toLocaleString() }}원 </span>
-          <button class="delete-btn" @click="store.deleteItem(item.id)">
-            삭제
-          </button>
-        </li>
-      </ul>
+      <table class="transaction-table">
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>구분</th>
+            <th>내용</th>
+            <th>금액</th>
+            <th>관리</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="item in store.items" :key="item.id">
+            <td>{{ item.date }}</td>
+            <td>{{ item.type === 'expense' ? '지출' : '수입' }}</td>
+            <td>{{ item.memo }}</td>
+            <td class="amount-cell">{{ item.amount.toLocaleString() }}원</td>
+            <td>
+              <button class="delete-btn" @click="store.deleteItem(item.id)">
+                삭제
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -109,37 +123,91 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+/* 테이블 전체 */
+.transaction-table {
   width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 12px;
 }
 
-.list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-  padding: 12px 14px;
-  border: 1px solid #3d3939;
+/* 헤더 */
+.transaction-table thead th {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #555;
+}
+
+/* 본문 셀 */
+.transaction-table tbody td {
+  padding: 16px 12px;
+  text-align: center;
+  vertical-align: middle;
   background-color: rgb(255, 231, 235);
-  border-radius: 10px;
-  width: 100%;
-  box-sizing: border-box;
+  border-top: 1px solid #3d3939;
+  border-bottom: 1px solid #3d3939;
+  word-break: keep-all;
+}
+
+/* 각 행 양 끝 둥글게 */
+.transaction-table tbody td:first-child {
+  border-left: 1px solid #3d3939;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.transaction-table tbody td:last-child {
+  border-right: 1px solid #3d3939;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* 열 너비 */
+.transaction-table th:nth-child(1),
+.transaction-table td:nth-child(1) {
+  width: 18%;
+}
+
+.transaction-table th:nth-child(2),
+.transaction-table td:nth-child(2) {
+  width: 12%;
+}
+
+.transaction-table th:nth-child(3),
+.transaction-table td:nth-child(3) {
+  width: 36%;
+}
+
+.transaction-table th:nth-child(4),
+.transaction-table td:nth-child(4) {
+  width: 18%;
+}
+
+.transaction-table th:nth-child(5),
+.transaction-table td:nth-child(5) {
+  width: 16%;
+}
+
+/* 금액 오른쪽 정렬 */
+.amount-cell {
+  text-align: right !important;
+  font-weight: 600;
+  padding-right: 20px !important;
 }
 
 .delete-btn {
   background: #ff5c5c;
   color: white;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
   white-space: nowrap;
   cursor: pointer;
 }
 
+/* 모바일 */
 @media (max-width: 768px) {
   .add-wrap {
     padding: 16px;
@@ -156,13 +224,22 @@ onMounted(() => {
     flex: 1 1 100%;
   }
 
-  .list-item {
-    flex-direction: column;
-    align-items: flex-start;
+  .transaction-table {
+    font-size: 14px;
+  }
+
+  .transaction-table thead th,
+  .transaction-table tbody td {
+    padding: 12px 8px;
+  }
+
+  .amount-cell {
+    padding-right: 10px !important;
   }
 
   .delete-btn {
-    align-self: flex-end;
+    padding: 6px 10px;
+    font-size: 13px;
   }
 }
 </style>

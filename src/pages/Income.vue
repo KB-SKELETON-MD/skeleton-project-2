@@ -5,6 +5,17 @@
       <h2>{{ store.currentMonth }}월 수입 내역</h2>
     </header>
 
+    <div class="search-box">
+      <input
+        v-model.trim="searchQuery"
+        type="text"
+        class="search-input"
+        placeholder="메모, 날짜, 금액으로 검색"
+      />
+      <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">
+        ✕
+      </button>
+    </div>
     <div class="category-filter-bar">
       <button
         :class="['filter-btn', { active: store.selectedCategoryId === null }]"
@@ -27,8 +38,13 @@
       <div v-if="incomeList.length === 0" class="empty-msg">
         해당 달의 수입 내역이 없습니다.
       </div>
+
+      <div v-else-if="searchedIncomeList.length === 0" class="empty-msg">
+        검색 결과가 없습니다.
+      </div>
+
       <div
-        v-for="item in incomeList"
+        v-for="item in searchedIncomeList"
         :key="item.id"
         class="list-item card-surface"
       >
@@ -37,7 +53,7 @@
           <span class="item-memo">{{ item.memo }}</span>
         </div>
         <div class="item-amount income-text">
-          + {{ item.amount.toLocaleString() }}
+          + {{ item.amount.toLocaleString() }}원
         </div>
       </div>
     </div>
@@ -45,10 +61,11 @@
 </template>
 
 <script setup>
-import { computed, onUnmounted } from 'vue';
+import { computed, ref, onUnmounted } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
 
 const store = useFinanceStore();
+const searchQuery = ref('');
 
 const filteredCategories = computed(() =>
   store.categories.filter((t) => t.type === 'income'),
@@ -58,6 +75,25 @@ const incomeList = computed(() =>
   store.filteredTransactions.filter((t) => t.type === 'income'),
 );
 
+const searchedIncomeList = computed(() => {
+  const keyword = searchQuery.value.toLowerCase().trim();
+
+  if (!keyword) return incomeList.value;
+
+  return incomeList.value.filter((item) => {
+    const dateText = String(item.date ?? '').toLowerCase();
+    const memoText = String(item.memo ?? '').toLowerCase();
+    const amountText = String(item.amount ?? '');
+    const formattedAmountText = Number(item.amount ?? 0).toLocaleString();
+
+    return (
+      dateText.includes(keyword) ||
+      memoText.includes(keyword) ||
+      amountText.includes(keyword) ||
+      formattedAmountText.includes(keyword)
+    );
+  });
+});
 // 페이지를 떠날 때 다른 페이지에 영향 주지 않도록 필터 리셋
 onUnmounted(() => store.setCategory(null));
 </script>
@@ -68,6 +104,7 @@ onUnmounted(() => store.setCategory(null));
   max-width: 800px;
   margin: 0 auto;
 }
+
 .list-header {
   display: flex;
   align-items: center;
@@ -75,6 +112,7 @@ onUnmounted(() => store.setCategory(null));
   margin-bottom: 25px;
   padding: 5px 0;
 }
+
 .back-btn {
   display: flex;
   align-items: center;
@@ -89,6 +127,38 @@ onUnmounted(() => store.setCategory(null));
   color: #ff7aa2;
   font-size: 14px;
   box-shadow: 0 2px 5px rgba(251, 194, 215, 0.3);
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 42px 12px 14px;
+  border: 1px solid #f3c7d5;
+  border-radius: 12px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #ff8fb1;
+}
+
+.clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #999;
+  font-size: 0.95rem;
 }
 
 .back-btn:hover {
@@ -150,7 +220,12 @@ onUnmounted(() => store.setCategory(null));
 .item-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+}
+
+.item-date {
+  font-size: 0.8rem;
+  color: #888;
 }
 
 .item-memo {
