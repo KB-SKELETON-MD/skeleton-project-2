@@ -145,7 +145,7 @@ const handleLogout = () => {
 
 <style scoped>
 .panel {
-  position: absolute;
+  position: fixed;
   right: 24px;
   width: 280px;
   background: white;
