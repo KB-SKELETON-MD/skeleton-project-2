@@ -102,7 +102,7 @@ const chartOptions = {
   align-items: center;
   justify-content: center;
   color: #000000;
-  background-color: #fbc2d7;
+  background-color: #f8edee;
   border-radius: 20px;
 }
 
