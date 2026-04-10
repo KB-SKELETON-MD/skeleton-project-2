@@ -23,9 +23,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useCalendarStore } from '@/stores/calendar';
+import { computed } from 'vue';
 
 const router = useRouter();
 const calendarStore = useCalendarStore();
+
+const profileInitial = computed(() => 'J');
 
 const goHome = () => {
   calendarStore.closeAllPanels();
