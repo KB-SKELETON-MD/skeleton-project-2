@@ -9,6 +9,11 @@
   --border: 1px solid #333333;
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+.report-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 
 * {
   box-sizing: border-box;

@@ -59,9 +59,10 @@ const chartOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: 'right',
+      position: 'bottom',
       labels: {
         padding: 20,
+        boxWidth: 15,
         font: { size: 12 },
       },
     },
