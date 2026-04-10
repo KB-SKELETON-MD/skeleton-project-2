@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/pages/Home.vue';
 import Report from '@/pages/Report.vue';
-import MyPages from '@/pages/MyPages.vue';
-import Settings from '@/pages/Settings.vue';
 import Transactions from '@/pages/Transactions.vue';
 import NotFound from '@/pages/NotFound.vue';
 import Income from '@/pages/Income.vue';
@@ -28,16 +26,6 @@ const router = createRouter({
       path: '/report',
       name: 'report',
       component: Report,
-    },
-    {
-      path: '/myPages',
-      name: 'myPages',
-      component: MyPages,
-    },
-    {
-      path: '/settings',
-      name: 'settings',
-      component: Settings,
     },
     {
       path: '/transactions',
