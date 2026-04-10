@@ -2,11 +2,17 @@
   <div class="dashboard-page">
     <div class="month-selector">
       <div class="month-bar">
-        <button class="arrow-btn" @click="store.changeMonth(-1)">&lt;</button>
+        <button class="arrow-btn" @click="store.changeMonth(-1)">
+          <strong>&lt;</strong>
+        </button>
         <span class="current-date"
-          >{{ store.currentYear }}년 {{ store.currentMonth }}월</span
+          ><strong
+            >{{ store.currentYear }}년 {{ store.currentMonth }}월</strong
+          ></span
         >
-        <button class="arrow-btn" @click="store.changeMonth(1)">&gt;</button>
+        <button class="arrow-btn" @click="store.changeMonth(1)">
+          <strong>&gt;</strong>
+        </button>
       </div>
     </div>
 
@@ -14,7 +20,7 @@
       <div class="left-graph">
         <div class="category-expense">
           <img src="@/assets/categoryicon.png" />
-          &nbsp;카테고리별 지출
+          &nbsp;&nbsp;카테고리별 지출
         </div>
         <div class="pie-container">
           <PieChart />
@@ -24,7 +30,7 @@
       <div class="right-graph">
         <div class="total">
           <img src="@/assets/totalicon.png" />
-          &nbsp;수입 · 지출 · 순수익
+          &nbsp;&nbsp;수입 · 지출 · 순수익
         </div>
 
         <div class="bar-container">
@@ -109,21 +115,23 @@ const changeMonth = (delta) => {
 .right-graph {
   display: flex;
   flex-direction: column;
-  flex: 0 0 calc(50% - 10px);
+  flex: 0 0 calc(50% - 15px);
   background-color: #fbc2d7;
   border-radius: 40px;
-  padding: 40px 30px;
+  padding: 40px 15px;
   box-sizing: border-box;
-  min-height: 450px;
+  min-height: 470px;
 }
 .category-expense,
 .total {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 30px;
   align-self: flex-start;
+  width: 100%;
 }
 img {
   width: 22px;
@@ -140,7 +148,7 @@ img {
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-  gap: 35px;
+  gap: 15px;
   padding-bottom: 20px;
 }
 .chart-bar {
@@ -149,21 +157,21 @@ img {
   align-items: center;
 }
 .amount-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
   color: #666;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   white-space: nowrap;
 }
 .label-text {
   font-size: 13px;
-  margin-top: 10px;
+  margin-top: 5px;
   color: #333;
 }
 .income-chart,
 .expense-chart,
 .revenue-chart {
-  width: 40px;
+  width: 60px;
   border-radius: 10px;
   transition: height 0.5s ease;
 }

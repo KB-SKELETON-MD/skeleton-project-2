@@ -25,7 +25,7 @@
         class="revenue-chart"
         :style="{ height: revenueHeight + 'px' }"
       ></div>
-      <span>순수익</span>
+      <span class="label-text">순수익</span>
     </div>
   </div>
 </template>
@@ -68,16 +68,18 @@ const revenueHeight = computed(
 .center-graph {
   display: flex;
   align-items: flex-end;
-  gap: 30px;
+  gap: 15px;
   justify-content: center;
   border-radius: 40px;
-  padding: 50px 20px;
+  padding: 50px 20px 10px 20px;
   background-color: var(--primary-pink);
   min-height: 250px;
   width: 100%;
-  height: 100%;
+  height: 200px;
+  /* height: 100%; */
 }
 .chart-bar {
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +87,7 @@ const revenueHeight = computed(
 .income-chart,
 .expense-chart,
 .revenue-chart {
-  width: 35px;
+  width: 60px;
   border-radius: 8px;
   transition: height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 튀어오르는 애니메이션 */
 }
