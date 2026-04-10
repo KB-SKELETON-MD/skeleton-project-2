@@ -57,8 +57,10 @@
       </button>
 
       <article class="card-pink chart-box" @click="$router.push('/report')">
+        <div class="report-header">
+          <strong>상세 리포트 보기</strong>
+        </div>
         <Chart />
-        <p class="tap-guide">상세 리포트 보기</p>
       </article>
 
       <aside class="action-area">
