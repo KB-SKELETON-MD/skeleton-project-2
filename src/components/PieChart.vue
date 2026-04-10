@@ -15,10 +15,16 @@
 <script setup>
 import { computed } from 'vue';
 import { Pie } from 'vue-chartjs';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  PieController,
+} from 'chart.js';
 import { useFinanceStore } from '@/stores/finance';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Pie);
 const store = useFinanceStore();
 
 // 1. 창고 데이터를 Chart.js가 이해하는 형식으로 변환
