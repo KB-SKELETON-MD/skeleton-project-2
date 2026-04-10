@@ -75,10 +75,6 @@ const store = useReportStore();
 onMounted(() => {
   store.fetchData();
 });
-
-const changeMonth = (delta) => {
-  store.changeMonth(delta);
-};
 </script>
 
 <style scoped>
