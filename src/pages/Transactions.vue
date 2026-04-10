@@ -3,11 +3,34 @@
     <div class="transactions-card">
       <h2 class="title">최근 거래 내역</h2>
 
+      <div class="search-box">
+        <input
+          v-model.trim="searchQuery"
+          type="text"
+          class="search-input"
+          placeholder="메모, 카테고리, 날짜, 금액 검색"
+        />
+        <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">
+          ✕
+        </button>
+      </div>
+
       <p v-if="loading" class="status-text">불러오는 중...</p>
+
+      <p v-else-if="recentTransactions.length === 0" class="status-text">
+        거래 내역이 없습니다.
+      </p>
+
+      <p
+        v-else-if="filteredRecentTransactions.length === 0"
+        class="status-text"
+      >
+        검색 결과가 없습니다.
+      </p>
 
       <div v-else class="transaction-list">
         <div
-          v-for="item in recentTransactions"
+          v-for="item in filteredRecentTransactions"
           :key="item.id"
           class="transaction-item"
         >
@@ -35,14 +58,39 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useTransactionStore } from '@/stores/transactions';
 
 const transactionStore = useTransactionStore();
+const searchQuery = ref('');
 
 const { recentTransactions, loading } = storeToRefs(transactionStore);
 const { fetchTransactions } = transactionStore;
+
+const filteredRecentTransactions = computed(() => {
+  const keyword = searchQuery.value.toLowerCase().trim();
+
+  if (!keyword) return recentTransactions.value;
+
+  return recentTransactions.value.filter((item) => {
+    const memoText = String(item.memo ?? '').toLowerCase();
+    const categoryText = String(item.categoryLabel ?? '').toLowerCase();
+    const dateText = String(item.date ?? '').toLowerCase();
+    const amountText = String(item.amount ?? '');
+    const formattedAmountText = Number(item.amount ?? 0).toLocaleString();
+    const typeText = item.type === 'income' ? '수입' : '지출';
+
+    return (
+      memoText.includes(keyword) ||
+      categoryText.includes(keyword) ||
+      dateText.includes(keyword) ||
+      amountText.includes(keyword) ||
+      formattedAmountText.includes(keyword) ||
+      typeText.includes(keyword)
+    );
+  });
+});
 
 onMounted(() => {
   fetchTransactions();
@@ -73,7 +121,39 @@ onMounted(() => {
   font-size: 28px;
   font-weight: 700;
   color: #ff5c8a;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 13px 42px 13px 14px;
+  border: 1px solid #f3c7d5;
+  border-radius: 12px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #ff8fb1;
+}
+
+.clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #999;
+  font-size: 0.95rem;
 }
 
 .transaction-list {

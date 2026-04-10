@@ -5,12 +5,29 @@
       <h2>{{ store.currentMonth }}월 수입 내역</h2>
     </header>
 
+    <div class="search-box">
+      <input
+        v-model.trim="searchQuery"
+        type="text"
+        class="search-input"
+        placeholder="메모, 날짜, 금액으로 검색"
+      />
+      <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">
+        ✕
+      </button>
+    </div>
+
     <div class="list-wrapper">
       <div v-if="incomeList.length === 0" class="empty-msg">
         해당 달의 수입 내역이 없습니다.
       </div>
+
+      <div v-else-if="searchedIncomeList.length === 0" class="empty-msg">
+        검색 결과가 없습니다.
+      </div>
+
       <div
-        v-for="item in incomeList"
+        v-for="item in searchedIncomeList"
         :key="item.id"
         class="list-item card-surface"
       >
@@ -19,7 +36,7 @@
           <span class="item-memo">{{ item.memo }}</span>
         </div>
         <div class="item-amount income-text">
-          + {{ item.amount.toLocaleString() }}
+          + {{ item.amount.toLocaleString() }}원
         </div>
       </div>
     </div>
@@ -27,30 +44,86 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useFinanceStore } from '@/stores/finance';
+
 const store = useFinanceStore();
+const searchQuery = ref('');
 
 const incomeList = computed(() =>
   store.filteredTransactions.filter((t) => t.type === 'income'),
 );
+
+const searchedIncomeList = computed(() => {
+  const keyword = searchQuery.value.toLowerCase().trim();
+
+  if (!keyword) return incomeList.value;
+
+  return incomeList.value.filter((item) => {
+    const dateText = String(item.date ?? '').toLowerCase();
+    const memoText = String(item.memo ?? '').toLowerCase();
+    const amountText = String(item.amount ?? '');
+    const formattedAmountText = Number(item.amount ?? 0).toLocaleString();
+
+    return (
+      dateText.includes(keyword) ||
+      memoText.includes(keyword) ||
+      amountText.includes(keyword) ||
+      formattedAmountText.includes(keyword)
+    );
+  });
+});
 </script>
 
 <style scoped>
 .page-container {
   padding: 20px;
 }
+
 .list-header {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
 }
+
 .back-btn {
   background: none;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 42px 12px 14px;
+  border: 1px solid #f3c7d5;
+  border-radius: 12px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #ff8fb1;
+}
+
+.clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #999;
+  font-size: 0.95rem;
 }
 
 .list-item {
@@ -63,20 +136,28 @@ const incomeList = computed(() =>
   border: 1px solid #eee;
   background: #fff;
 }
+
 .item-info {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
+
 .item-date {
   font-size: 0.8rem;
   color: #888;
 }
+
 .item-memo {
   font-weight: 600;
 }
 
-/* 수입: 밝은 초록 계열 */
+.empty-msg {
+  text-align: center;
+  padding: 50px 0;
+  color: #999;
+}
+
 .income-text {
   color: #4cd170;
   font-weight: bold;
