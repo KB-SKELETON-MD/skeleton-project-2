@@ -62,7 +62,7 @@ const selectMonth = async (month) => {
 
 <style scoped>
 .panel {
-  position: absolute;
+  position: fixed;
   right: 24px;
   width: 320px;
   background: white;

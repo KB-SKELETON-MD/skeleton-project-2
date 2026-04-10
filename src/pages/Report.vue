@@ -19,7 +19,7 @@
     <div class="charts-wrapper">
       <div class="left-graph">
         <div class="category-expense">
-          <img src="@/assets/categoryicon.png" />
+          <img src="@/assets/categoryicon1.png" />
           &nbsp;&nbsp;카테고리별 지출
         </div>
         <div class="pie-container">
@@ -98,7 +98,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fbc2d7;
+  background-color: #f8edee;
   padding: 12px 20px;
   border-radius: 40px;
   border: 1.5px solid var(--border-color);
@@ -109,10 +109,11 @@ onMounted(() => {
 }
 .left-graph,
 .right-graph {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   flex: 0 0 calc(50% - 15px);
-  background-color: #fbc2d7;
+  background-color: #f8edee;
   border-radius: 40px;
   padding: 40px 15px;
   box-sizing: border-box;

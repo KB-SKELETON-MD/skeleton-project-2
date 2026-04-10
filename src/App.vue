@@ -3,7 +3,7 @@
     <template v-if="route.path !== '/login'">
       <Header />
 
-      <div class="panel-layer">
+      <div class="panel- layer">
         <CalendarPanel v-if="isCalendarOpen" />
         <ProfilePanel v-if="isProfileOpen" />
       </div>

@@ -1,8 +1,8 @@
 <template>
   <header class="top-bar">
     <div class="brand-area" @click="goHome">
-      <img src="@/assets/logos.png" alt="가계쀼 로고" class="logo-icon" />
-      <span class="brand-name">가계쀼</span>
+      <img src="@/assets/logo.png" alt="가계쀼 로고" class="logo-icon" />
+      <!-- <span class="brand-name">가계쀼</span> -->
     </div>
 
     <div class="top-actions">
@@ -23,9 +23,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useCalendarStore } from '@/stores/calendar';
+import { computed } from 'vue';
 
 const router = useRouter();
 const calendarStore = useCalendarStore();
+
+const profileInitial = computed(() => 'J');
 
 const goHome = () => {
   calendarStore.closeAllPanels();
