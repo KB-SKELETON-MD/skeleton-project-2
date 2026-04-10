@@ -81,10 +81,11 @@ import { useFinanceStore } from '@/stores/finance';
 import Chart from '@/components/Chart.vue';
 
 const store = useFinanceStore();
-
-const latestItems = computed(() =>
-  [...store.filteredTransactions].reverse().slice(0, 5),
-);
+const latestItems = computed(() => {
+  return [...store.filteredTransactions]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 5);
+});
 onMounted(() => {
   if (store.transactions.length === 0) store.fetchData();
 });
