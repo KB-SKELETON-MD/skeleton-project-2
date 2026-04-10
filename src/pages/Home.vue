@@ -44,15 +44,17 @@
         @click="$router.push('/transactions')"
       >
         <h3><strong>최근 거래 내역</strong></h3>
+
         <div
           v-for="item in latestItems"
           :key="item.id"
           class="transaction-item"
         >
-          <span>{{ item.date.slice(5) }}</span>
-          <hr />
-          <span>{{ item.memo }}</span>
-          <span :class="item.type">{{ item.amount.toLocaleString() }}원</span>
+          <span class="transaction-date">{{ item.date.slice(5) }}</span>
+          <span class="transaction-memo">{{ item.memo }}</span>
+          <span class="transaction-amount" :class="item.type">
+            {{ item.amount.toLocaleString() }}원
+          </span>
         </div>
       </button>
 
@@ -79,13 +81,77 @@ import { useFinanceStore } from '@/stores/finance';
 import Chart from '@/components/Chart.vue';
 
 const store = useFinanceStore();
-
-const latestItems = computed(() =>
-  [...store.filteredTransactions].reverse().slice(0, 5),
-);
+const latestItems = computed(() => {
+  return [...store.filteredTransactions]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 5);
+});
 onMounted(() => {
   if (store.transactions.length === 0) store.fetchData();
 });
 </script>
 
-<style></style>
+<style>
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: 24px 20px;
+  border: none;
+  background-color: #e9b6c7;
+  border-radius: 24px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.transaction-list h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-date {
+  flex: 0 0 68px;
+  font-size: 16px;
+  color: #222;
+}
+
+.transaction-memo {
+  flex: 1;
+  font-size: 17px;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transaction-amount {
+  flex: 0 0 110px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.transaction-amount.income {
+  color: #2563eb;
+}
+
+.transaction-amount.expense {
+  color: #111;
+}
+</style>
