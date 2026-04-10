@@ -24,7 +24,7 @@ import {
 } from 'chart.js';
 import { useFinanceStore } from '@/stores/finance';
 
-ChartJS.register(ArcElement, Tooltip, Legend, Pie);
+ChartJS.register(ArcElement, Tooltip, Legend);
 const store = useFinanceStore();
 
 // 1. 창고 데이터를 Chart.js가 이해하는 형식으로 변환
@@ -95,7 +95,7 @@ const chartOptions = {
 .pie-chart-container {
   width: 100%;
   max-width: 600px;
-  height: 300px;
+  height: 350px;
   margin: 0 auto;
   position: relative;
 }
