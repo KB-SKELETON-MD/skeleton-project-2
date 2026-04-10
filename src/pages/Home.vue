@@ -99,7 +99,15 @@ import Chart from '@/components/Chart.vue';
 const store = useFinanceStore();
 
 const latestItems = computed(() =>
-  [...store.filteredTransactions].reverse().slice(0, 5),
+  [...store.filteredTransactions]
+    .sort((a, b) => {
+      const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
+
+      if (dateDiff !== 0) return dateDiff;
+
+      return b.id - a.id;
+    })
+    .slice(0, 5),
 );
 onMounted(() => {
   if (store.transactions.length === 0) store.fetchData();
