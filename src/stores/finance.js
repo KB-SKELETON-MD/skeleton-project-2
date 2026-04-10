@@ -11,6 +11,11 @@ export const useFinanceStore = defineStore('finance', () => {
   const categories = ref([]);
   const transactions = ref([]);
   const isLoading = ref(false);
+  const selectedCategoryId = ref(null);
+
+  const setCategory = (id) => {
+    selectedCategoryId.value = id;
+  };
 
   // 1. 데이터 로드 (경로는 서버 설정에 맞게 /db 또는 /transactions로 확인 필요)
   const fetchData = async () => {
@@ -35,9 +40,15 @@ export const useFinanceStore = defineStore('finance', () => {
   // 3. 필터링된 내역 (연도-월 형식 맞춤)
   const filteredTransactions = computed(() => {
     const target = `${currentYear.value}-${String(currentMonth.value).padStart(2, '0')}`;
-    return transactions.value.filter(
+    let list = transactions.value.filter(
       (t) => t.date && t.date.startsWith(target),
     );
+
+    if (selectedCategoryId.value) {
+      list = list.filter((t) => t.categoryId === selectedCategoryId.value);
+    }
+
+    return list;
   });
 
   // 4. 리포트용 카테고리별 지출 데이터
@@ -85,6 +96,8 @@ export const useFinanceStore = defineStore('finance', () => {
     currentYear,
     currentMonth,
     isLoading,
+    selectedCategoryId,
+    setCategory,
     fetchData,
     setMonth,
     totalIncome,
