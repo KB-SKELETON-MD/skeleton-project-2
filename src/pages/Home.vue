@@ -63,7 +63,9 @@
           <hr />
           <span>{{ item.memo }}</span>
           <hr />
-          <span>{{ item.amount.toLocaleString() }}원</span>
+          <span :class="item.type"
+            ><b>{{ item.amount.toLocaleString() }}원</b></span
+          >
         </div>
       </button>
 

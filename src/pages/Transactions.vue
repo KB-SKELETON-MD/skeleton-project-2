@@ -165,7 +165,6 @@ onMounted(() => {
 .transaction-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background: #fff7fa;
   border: 1px solid #ffd6e2;
   border-radius: 18px;
@@ -175,6 +174,7 @@ onMounted(() => {
 .left-box {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 6px;
 }
 
